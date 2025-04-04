@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://dpmfe5bhuj4wi"]
+[gd_scene load_steps=3 format=3 uid="uid://dpmfe5bhuj4wi"]
+
+[ext_resource type="Texture2D" uid="uid://c2ntxmgk0t7mc" path="res://assets/Sprites/Arrows/Left-background removed.PNG" id="1_6w5bs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0wo3"]
+size = Vector2(139, 70)
 
 [node name="LeftArrow" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6w5bs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -29)
+shape = SubResource("RectangleShape2D_b0wo3")

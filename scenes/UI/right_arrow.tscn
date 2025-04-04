@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://daqi41km70ql8" path="res://assets/Sprites/Arrows/Right-background removed.PNG" id="1_advls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7dsk"]
+size = Vector2(136, 70)
 
 [node name="RightArrow" type="Area2D"]
 
@@ -10,4 +11,5 @@
 texture = ExtResource("1_advls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, -29)
 shape = SubResource("RectangleShape2D_e7dsk")

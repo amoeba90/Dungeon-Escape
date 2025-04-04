@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://bsoe4ucocogkq"]
+[gd_scene load_steps=3 format=3 uid="uid://bsoe4ucocogkq"]
+
+[ext_resource type="Texture2D" uid="uid://cm8etrnmraj43" path="res://assets/Sprites/Arrows/Forward-background removed.PNG" id="1_2d56n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nlg5"]
+size = Vector2(76, 136)
 
 [node name="UpArrow" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2d56n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, -8)
+shape = SubResource("RectangleShape2D_1nlg5")

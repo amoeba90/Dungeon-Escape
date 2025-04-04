@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://d2wokpixnlha0"]
+[gd_scene load_steps=3 format=3 uid="uid://d2wokpixnlha0"]
+
+[ext_resource type="Texture2D" uid="uid://be2xoh7dnar7e" path="res://assets/Sprites/Arrows/Back-background removed.PNG" id="1_yvy34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsb87"]
+size = Vector2(76, 132)
 
 [node name="DownArrow" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yvy34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, -24)
+shape = SubResource("RectangleShape2D_gsb87")

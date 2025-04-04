@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bx3xbqbqbf7wi"]
 
-[ext_resource type="Script" path="res://scenes/Main/Menu/Pause Menu/pause.gd" id="1_550y5"]
+[ext_resource type="Script" path="res://scenes/Main/Menu/Pause_Menu/pause.gd" id="1_550y5"]
 
 [node name="Pause" type="Popup"]
 size = Vector2i(128, 136)
