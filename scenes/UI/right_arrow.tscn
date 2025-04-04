@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4bd8jvii6i57"]
+
+[ext_resource type="Texture2D" uid="uid://daqi41km70ql8" path="res://assets/Sprites/Arrows/Right-background removed.PNG" id="1_advls"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7dsk"]
+
+[node name="RightArrow" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_advls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e7dsk")

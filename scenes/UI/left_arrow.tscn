@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dpmfe5bhuj4wi"]
+
+[node name="LeftArrow" type="Area2D"]
