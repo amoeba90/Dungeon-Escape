@@ -12,7 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_pbq36")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(800, 400)
+custom_minimum_size = Vector2(800, 450)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

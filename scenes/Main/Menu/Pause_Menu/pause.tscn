@@ -2,44 +2,82 @@
 
 [ext_resource type="Script" path="res://scenes/Main/Menu/Pause_Menu/pause.gd" id="1_550y5"]
 
-[node name="Pause" type="Control"]
+[node name="Pause_Menu" type="Control"]
+process_mode = 3
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 128.0
-offset_bottom = 136.0
-script = ExtResource("1_550y5")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -68.0
-offset_right = 48.0
-offset_bottom = 68.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_550y5")
 
-[node name="Resume_Button" type="Button" parent="VBoxContainer"]
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 250
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="Pause_Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Resume_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Resume"
 
-[node name="Save_Button" type="Button" parent="VBoxContainer"]
+[node name="Save_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-text = "Save"
+theme_override_font_sizes/font_size = 24
+text = "Save Game"
 
-[node name="Settings_Button" type="Button" parent="VBoxContainer"]
+[node name="Settings_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Settings"
 
-[node name="Main_Menu_Button" type="Button" parent="VBoxContainer"]
+[node name="Main_Menu_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Main Menu"
 
-[connection signal="pressed" from="VBoxContainer/Resume_Button" to="." method="_on_Resume_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Save_Button" to="." method="_on_Save_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings_Button" to="." method="_on_Settings_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Main_Menu_Button" to="." method="_on_Main_Menu_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Resume_Button" to="." method="_on_Resume_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Save_Button" to="." method="_on_Save_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Settings_Button" to="." method="_on_Settings_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Main_Menu_Button" to="." method="_on_Main_Menu_Button_pressed"]
