@@ -1,7 +1,7 @@
 # fade_overlay.gd
-extends ColorRect
+extends ColorRect # use for full page fading
 
-# Fades out from black to transparent
+# Fades out from black to transparent 
 func fade_out(duration: float = 1.0) -> void:
 	self.color = Color(0, 0, 0, 255)  # Start fully black
 	var tween = create_tween()

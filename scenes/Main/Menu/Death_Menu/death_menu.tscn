@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnyrevyv06peq"]
+
+[ext_resource type="Script" path="res://scenes/Main/Menu/Death_Menu/death_menu.gd" id="1_rkvwq"]
+
+[node name="DeathMenu" type="Popup"]
+size = Vector2i(138, 136)
+visible = true
+unfocusable = true
+script = ExtResource("1_rkvwq")
+
+[node name="You_Died" type="Label" parent="."]
+offset_right = 128.0
+offset_bottom = 23.0
+text = "YOU DIED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 93.0
+offset_bottom = 101.0
+alignment = 1
+
+[node name="New_Game_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Try_Again_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load Last Save"
+
+[node name="Settings_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Main_Menu_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/New_Game_Button" to="." method="_on_New_Game_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Try_Again_Button" to="." method="_on_Try_Again_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings_Button" to="." method="_on_Settings_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main_Menu_Button" to="." method="_on_Main_Menu_Button_pressed"]

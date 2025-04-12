@@ -1,5 +1,5 @@
 # pause.gd
-extends Popup
+extends PopupMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,8 +16,12 @@ func _on_Save_Button_pressed():
 	SaveSystem.save_game()
 
 func _on_Settings_Button_pressed():
-	print("Settings button pressed") # temp debug line
+	var settings_scene = load("res://scenes/Systems/settings.tscn").instantiate()
+	get_tree().root.add_child(settings_scene)
+	# set the previous scene to return to
+	settings_scene.previous_scene = get_tree().current_scene.scene_file_path
+	self.visible = false
 
 func _on_Main_Menu_Button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://scenes/Main/Menu/Main_Menu/main_menu.tscn")
+	GameUtils.change_scene("res://scenes/Main/Menu/Main_Menu/main_menu.tscn")

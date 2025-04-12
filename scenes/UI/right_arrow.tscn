@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4bd8jvii6i57"]
+[gd_scene load_steps=4 format=3 uid="uid://b4bd8jvii6i57"]
 
 [ext_resource type="Texture2D" uid="uid://daqi41km70ql8" path="res://assets/Sprites/Arrows/Right-background removed.PNG" id="1_advls"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="1_ng04o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7dsk"]
 size = Vector2(136, 70)
 
 [node name="RightArrow" type="Area2D"]
+script = ExtResource("1_ng04o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_advls")

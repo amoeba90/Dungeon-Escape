@@ -1,5 +1,5 @@
 # game_utils.gd
-extends Node
+extends Node # use for individual node fading, sounds, changing scenes, and changing backgrounds
 
 # Fade overlay visibility and opacity
 func fade_in(node, duration):
@@ -16,7 +16,7 @@ func play_sound(audio_player):
 
 # Change scenes
 func change_scene(scene_path):
-	get_tree().change_scene(scene_path)
+	get_tree().change_scene_to_file(scene_path)
 
 func change_background(background_nodes, visible_node):
 	for node in background_nodes:

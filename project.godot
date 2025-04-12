@@ -22,8 +22,13 @@ SaveSystem="*res://scenes/Systems/save_system.gd"
 FadeOverlay="*res://scenes/Systems/fade_overlay.gd"
 PauseManager="*res://scenes/Main/Menu/Pause_Menu/pause.gd"
 Main="*res://scenes/Main/main.gd"
-AudioManager="*res://scenes/Systems/audio.gd"
-SettingsManager="*res://scenes/Systems/settings.gd"
+SettingsManager="*res://scenes/Systems/settings_manager.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 
 [input]
 

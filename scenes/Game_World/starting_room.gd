@@ -1,6 +1,9 @@
 # starting_room.gd
 extends Node2D
 
+var game_utils
+var fade_overlay
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# assign game_utils and fade_overlay to the doors
