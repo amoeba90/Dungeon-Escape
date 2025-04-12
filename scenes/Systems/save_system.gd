@@ -24,7 +24,7 @@ func load_game():
 	if FileAccess.file_exists(save_file_path):
 		var file = FileAccess.open(save_file_path, FileAccess.READ) # Open thte file for reading
 		if file: # ensure file was opened successfully
-			var data = JSON.parse_string(file.get_as_text) # Use JSON.parse()) to parse the JSON string
+			var data = JSON.parse_string(file.get_as_text()) # Use JSON.parse()) to parse the JSON string
 			if typeof(data) == TYPE_DICTIONARY: # ensure loaded data is a dictionary
 				save_data = data
 				print("Game loaded successfully")

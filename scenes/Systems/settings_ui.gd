@@ -2,11 +2,11 @@
 extends Control
 
 # Node references
-@onready var master_slider = $Panel/MarginContainer/VBoxContainer/MasterVolumeContainer/MasterVolumeSlider
-@onready var music_slider = $Panel/MarginContainer/VBoxContainer/MusicVolumeContainer/MusicVolumeSlider
-@onready var sfx_slider = $Panel/MarginContainer/VBoxContainer/SFXVolumeContainer/SFXVolumeSlider
-@onready var fullscreen_check = $Panel/MarginContainer/VBoxContainer/FullscreenContainer/FullscreenCheck
-@onready var resolution_option = $Panel/MarginContainer/VBoxContainer/ResolutionContainer/ResolutionOption
+@onready var master_slider = $Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider
+@onready var music_slider = $Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer/MusicVolumeSlider
+@onready var sfx_slider = $Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer/SFXVolumeSlider
+@onready var fullscreen_check = $Panel/MarginContainer/VBoxContainer/SettingsContainner/FullScreenContainer/FullscreenCheck
+@onready var resolution_option = $Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer/ResolutionOption
 
 # Previous scene to return to
 var previous_scene = "res://scenes/Main/Menu/Main_Menu/main_menu.tscn"

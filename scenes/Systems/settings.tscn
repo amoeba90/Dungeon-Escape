@@ -151,3 +151,12 @@ text = "Apply"
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Back"
+
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_changed"]
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_music_volume_changed"]
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_changed"]
+[connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer/ResolutionOption" to="." method="_on_resolution_selected"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/FullScreenContainer/FullscreenCheck" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonContainer/Apply_Button" to="." method="_on_apply_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonContainer/Back_Button" to="." method="_on_back_button_pressed"]
