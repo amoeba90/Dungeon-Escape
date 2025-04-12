@@ -1,8 +1,91 @@
-[gd_scene format=3 uid="uid://buwklbitffh"]
+[gd_scene load_steps=2 format=3 uid="uid://buwklbitffh"]
+
+[ext_resource type="Script" path="res://scenes/Systems/dialogue_ui.gd" id="1_uhbn6"]
 
 [node name="DialogueUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_uhbn6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
+
+[node name="DialogueContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DialogueContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer/DialogueContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="SpeakerBox" type="Panel" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox"]
+layout_mode = 0
+offset_top = -65.0
+offset_right = 200.0
+offset_bottom = -5.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/SpeakerBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.5
+offset_right = 74.0
+offset_bottom = 21.5
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SpeakerLabel" type="Label" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/SpeakerBox/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/MarginContainer"]
+layout_mode = 2
+
+[node name="DialogueText" type="RichTextLabel" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContinueArrow" type="TextureRect" parent="CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ChoicesPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/ChoicesPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10

@@ -1,23 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://dym6s27hogymo"]
+[gd_scene load_steps=5 format=3 uid="uid://dym6s27hogymo"]
 
 [ext_resource type="Texture2D" uid="uid://dkghvnocxl4k2" path="res://assets/Sprites/Rooms/Dean/Entrance_Blocked/Dean's_path_sealed.png" id="1_30bm1"]
+[ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_entrance_blocked.gd" id="1_oi4ta"]
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="2_hxit7"]
+[ext_resource type="Script" path="res://scenes/Systems/fade_overlay.gd" id="4_tw7k1"]
 
 [node name="DeanEntranceBlocked" type="Node2D"]
+script = ExtResource("1_oi4ta")
 
-[node name="Background_Original" type="Sprite2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
 texture = ExtResource("1_30bm1")
 
-[node name="DownArrow_Area" parent="." instance=ExtResource("2_hxit7")]
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("2_hxit7")]
 position = Vector2(960, 1000)
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1"
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_tw7k1")
