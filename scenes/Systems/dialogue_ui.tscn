@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://buwklbitffh"]
+
+[node name="DialogueUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10

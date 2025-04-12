@@ -3,23 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://dkghvnocxl4k2" path="res://assets/Sprites/Rooms/Dean/Entrance_Blocked/Dean's_path_sealed.png" id="1_30bm1"]
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="2_hxit7"]
 
-[node name="Node2D" type="Node2D"]
+[node name="DeanEntranceBlocked" type="Node2D"]
+
+[node name="Background_Original" type="Sprite2D" parent="."]
+texture = ExtResource("1_30bm1")
+
+[node name="DownArrow_Area" parent="." instance=ExtResource("2_hxit7")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Background_Original" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_30bm1")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -28,6 +21,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="DownArrow" parent="CanvasLayer/Control" instance=ExtResource("2_hxit7")]
-position = Vector2(960, 1000)

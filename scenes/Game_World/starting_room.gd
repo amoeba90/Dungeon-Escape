@@ -7,8 +7,8 @@ var fade_overlay
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# assign game_utils and fade_overlay to the doors
-	var left_door = $CanvasLayer/LeftDoor_Area
-	var right_door = $CanvasLayer/RightDoor_Area
+	var left_door = $InteractiveAreas/LeftDoor_Area
+	var right_door = $InteractiveAreas/RightDoor_Area
 	# assign global references
 	left_door.game_utils = GameUtils
 	right_door.game_utils = GameUtils
@@ -18,8 +18,8 @@ func _ready() -> void:
 # toggle background visibiility based on the door clicked
 func toggle_background_visibility(door: String) -> void:
 	if door == "left":
-		$CanvasLayer/Background_Original.visible = false # hide original visual
-		$CanvasLayer/Background_LeftDoorOpen.visible = true # show left door open visual
+		$Background/Background_Original.visible = false # hide original visual
+		$Background/Background_LeftDoorOpen.visible = true # show left door open visual
 	elif door == "right":
-		$CanvasLayer/Background_Original.visible = false # hide original visual
-		$CanvasLayer/Background_RightDoorOpen.visible = true # show right door open visual
+		$Background/Background_Original.visible = false # hide original visual
+		$Background/Background_RightDoorOpen.visible = true # show right door open visual
