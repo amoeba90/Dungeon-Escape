@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ytsmkjylreeo"]
+[gd_scene load_steps=6 format=3 uid="uid://ytsmkjylreeo"]
 
 [ext_resource type="Script" path="res://scenes/Game_World/starting_room.gd" id="1_1mjch"]
 [ext_resource type="Texture2D" uid="uid://c0by7ibupcpfm" path="res://assets/Sprites/Rooms/Start_Room/Beginning_Choose_A_Door.png" id="1_w27wj"]
 [ext_resource type="Texture2D" uid="uid://c0v2s71l80cdk" path="res://assets/Sprites/Rooms/Start_Room/Dean's_Path_Chosen.png" id="2_mieam"]
 [ext_resource type="Texture2D" uid="uid://getnxv6vvojs" path="res://assets/Sprites/Rooms/Start_Room/Emma's_Path_Chosen.png" id="3_jbsjn"]
-[ext_resource type="Script" path="res://scenes/Systems/fade_overlay.gd" id="3_q8ldn"]
 [ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="7_v48dx"]
 
 [node name="StartingRoom" type="Node2D"]
@@ -31,6 +30,7 @@ texture = ExtResource("3_jbsjn")
 [node name="LeftDoor_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("7_v48dx")
+transition_type = "left_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/LeftDoor_Area"]
 position = Vector2(555, 294)
@@ -41,20 +41,8 @@ polygon = PackedVector2Array(-6, -5.79661, -5.46, -7.28814, -4.6, -8.64407, -3.3
 position = Vector2(498, -24)
 script = ExtResource("7_v48dx")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_entrance_blocked.tscn"
+transition_type = "right_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/RightDoor_Area"]
 position = Vector2(1, 1)
 polygon = PackedVector2Array(643, 720, 674, 305, 707, 185, 744, 126, 792, 80, 864, 45, 980, 29, 1100, 44, 1194, 96, 1246, 174, 1279, 281, 1333, 726)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("3_q8ldn")

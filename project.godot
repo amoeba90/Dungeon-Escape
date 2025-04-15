@@ -19,11 +19,11 @@ config/icon="res://icon.svg"
 
 GameUtils="*res://scenes/Systems/game_utils.gd"
 SaveSystem="*res://scenes/Systems/save_system.gd"
-FadeOverlay="*res://scenes/Systems/fade_overlay.gd"
 PauseManager="*res://scenes/Main/Menu/Pause_Menu/pause.gd"
 Main="*res://scenes/Main/main.gd"
 SettingsManager="*res://scenes/Systems/settings_manager.gd"
 DialogueManager="*res://scenes/Systems/dialogue_manager.gd"
+SceneChanger="*res://scenes/Systems/scene_changer.tscn"
 
 [display]
 

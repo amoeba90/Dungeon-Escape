@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://j78yg6exq5gx"]
+[gd_scene load_steps=8 format=3 uid="uid://j78yg6exq5gx"]
+
+[ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_rock_room.gd" id="1_n53vs"]
+[ext_resource type="Texture2D" uid="uid://b3hkab18i832d" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Right_Door/Lever not pulled yet.png" id="1_s8lia"]
+[ext_resource type="Texture2D" uid="uid://jj72h4mcerx3" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Right_Door/lever_pulled.png" id="2_v0gma"]
+[ext_resource type="Texture2D" uid="uid://csltcqplxfcym" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Right_Door/Rocks falling.png" id="3_pgub1"]
+[ext_resource type="Texture2D" uid="uid://7gcfn7wt6w23" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Right_Door/Rocks blocking door.png" id="4_gf3sx"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="4_ra0u0"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="5_5tssb"]
 
 [node name="DeanRockRoom" type="Node2D"]
+script = ExtResource("1_n53vs")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_s8lia")
+
+[node name="Background_LeverPull" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_v0gma")
+
+[node name="Background_RockFallStart" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_pgub1")
+
+[node name="Background_RockFallEnd" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_gf3sx")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Lever_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("4_ra0u0")
+transition_type = "pull_lever"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Lever_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(6.76, -0.0451975, 6.78, -2.41808, 7.24, -2.89266, 7.6, -2.87006, 8.12, -2.35028, 8.08, -0.0451975)
+
+[node name="DownArrow_Area" parent="." instance=ExtResource("5_5tssb")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1.tscn"

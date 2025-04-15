@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://61ybb5bup6sd"]
+[gd_scene load_steps=8 format=3 uid="uid://61ybb5bup6sd"]
 
 [ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_hallway_2.gd" id="1_0im7u"]
 [ext_resource type="Texture2D" uid="uid://fkgggn53d8ka" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Hallway_2.png" id="2_qvoof"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cjnlfs4j6ys2f" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Hallway_2-_Double_Doors_Open.png" id="5_4iutp"]
 [ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="6_rnhep"]
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="7_flsto"]
-[ext_resource type="Script" path="res://scenes/Systems/fade_overlay.gd" id="8_cj2xv"]
 
 [node name="DeanHallway2" type="Node2D"]
 script = ExtResource("1_0im7u")
@@ -65,17 +64,4 @@ polygon = PackedVector2Array(860, 478, 859, 137, 1267, 135, 1266, 475)
 
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("7_flsto")]
 position = Vector2(960, 1000)
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_entrance_blocked.tscn"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("8_cj2xv")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1.tscn"

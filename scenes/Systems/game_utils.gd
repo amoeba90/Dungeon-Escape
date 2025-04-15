@@ -1,14 +1,5 @@
 # game_utils.gd
-extends Node # use for individual node fading, sounds, changing scenes, and changing backgrounds
-
-# Fade overlay visibility and opacity
-func fade_in(node, duration):
-	node.color = Color(0, 0, 0, 255)  # Start fully black
-	node.create_timer(duration).set_opacity(0)  # Fade to transparent
-
-func fade_out(node, duration):
-	node.color = Color(0, 0, 0, 0)  # Start transparent
-	node.create_timer(duration).set_opacity(255)  # Fade to black
+extends Node # use for sounds, changing scenes, and changing backgrounds
 
 # Play a sound effect
 func play_sound(audio_player):

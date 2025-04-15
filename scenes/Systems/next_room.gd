@@ -3,9 +3,7 @@ extends Area2D
 
 @export var next_scene_path: String = ""  # Path to the next scene
 @export var sound_path: String = "" # Path to the sound file played
-
-var game_utils
-var fade_overlay
+@export var transition_type: String = "" # for specifying transition behavior
 
 func _ready():
 	# Explicitly connect the input_event signal
@@ -14,12 +12,16 @@ func _ready():
 # Called when input is detected within this Area2D
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):  # Detect left mouse click
+		print("Click deteected on: " + name)
+		
+		var parent_scene = get_parent().get_parent()
+		if transition_type != "" and parent_scene.has_method("handle_transition"):
+			parent_scene.handle_transition(transition_type)
 		
 		play_custom_sound() # Play sound for door/arrow
 		
 		if next_scene_path.strip_edges():
-			fade_overlay.fade_out(1.0)  # Trigger fade-out animation
-			game_utils.change_scene(next_scene_path)  # Change the scene
+			SceneChanger.change_scene(next_scene_path)
 		else:
 			print("Error: next_scene_path is not set or is empty!")
 
