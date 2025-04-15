@@ -1,3 +1,67 @@
-[gd_scene format=3 uid="uid://vkqfwn2347jv"]
+[gd_scene load_steps=7 format=3 uid="uid://vkqfwn2347jv"]
+
+[ext_resource type="Texture2D" uid="uid://cyi5slb7a1ey3" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Left_Door/Abandoned_Dining_Room_(key_In_Drawer)_.png" id="1_kg4s4"]
+[ext_resource type="Texture2D" uid="uid://bf3h0n24ihr51" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Left_Door/Dining_Room_-_Empty_Cabinet_opened.png" id="2_3lp6s"]
+[ext_resource type="Texture2D" uid="uid://0m0vs52t2ncy" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Left_Door/Key in the drawer.png" id="3_tj0wj"]
+[ext_resource type="Texture2D" uid="uid://c1g5ovm1ou4yd" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Left_Door/Dining_Room_-_Drawer_opened_(key_taken).png" id="4_1xd00"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_it7jd"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_2oy2t"]
 
 [node name="DeanDiningRoom" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_kg4s4")
+
+[node name="Background_CabinetEmpty" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_3lp6s")
+
+[node name="Background_DrawerKey" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_tj0wj")
+
+[node name="Background_DrawerEmpty" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_1xd00")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Cabinet_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_it7jd")
+transition_type = "open_cabinet"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Cabinet_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-1.68, -8.0452, -6.44, -8.0678, -6.5, -3.84181, -1.74, -3.77401)
+
+[node name="Drawer_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_it7jd")
+transition_type = "open_drawer"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Drawer_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(6.48, 5.17514, 5.56, 7.18644, 7.02, 12.0452, 8.26, 10.4181)
+
+[node name="Key_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_it7jd")
+transition_type = "take_key"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Key_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(6.5, 7.00565, 5.68, 7.00565, 5.58, 8.92655, 6.38, 8.92655)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_2oy2t")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_2.tscn"

@@ -44,6 +44,6 @@ position = Vector2(1166, 256)
 scale = Vector2(50, 44.25)
 polygon = PackedVector2Array(6.76, -0.0451975, 6.78, -2.41808, 7.24, -2.89266, 7.6, -2.87006, 8.12, -2.35028, 8.08, -0.0451975)
 
-[node name="DownArrow_Area" parent="." instance=ExtResource("5_5tssb")]
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("5_5tssb")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1.tscn"

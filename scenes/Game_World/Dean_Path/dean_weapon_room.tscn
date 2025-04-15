@@ -1,3 +1,45 @@
-[gd_scene format=3 uid="uid://tiifaltjq6w6"]
+[gd_scene load_steps=5 format=3 uid="uid://tiifaltjq6w6"]
+
+[ext_resource type="Texture2D" uid="uid://b1jmobhnelh65" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Right_Door/Weapon_Room before talking to npc.png" id="1_pup4g"]
+[ext_resource type="Texture2D" uid="uid://bnxgq6brp0wnj" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Right_Door/Weapon_Room after talking - npc gives sword.png" id="2_qdgon"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_pqv5p"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_hke1n"]
 
 [node name="DeanWeaponRoom" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_pup4g")
+
+[node name="Background_SwordTaken" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_qdgon")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="NPC_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_pqv5p")
+transition_type = "npc"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/NPC_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(3.86, 7.02825, 4.74, 7.16384, 5.2, 6.66667, 5.74, 4.49718, 6.7, 5.37853, 6.02, 5.58192, 6.44, 6.62147, 7.32, 7.41243, 8.14, 7.07345, 7.74, 6.53107, 9.74, 6.37288, 10.54, 5.44633, 9.7, 4.83616, 10.22, 4.15819, 9.78, 1.46893, 8.44, 0.497175, 8.08, -1.08475, 6.72, -1.06215, 6.54, -0.0451975, 5.52, 0.135593, 4.76, 1.17514, 4.62, 2.80226, 4.24, 3.61582, 4.3, 5.87571, 3.7, 6.68927)
+
+[node name="Sword_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_pqv5p")
+transition_type = "sword"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Sword_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-1.24, -9.49153, -2.72, -9.49153, -2.36, -7.38983, -3.3, -8.40678, -3.88, -6.64407, -3.28, -4.47458, -2.5, -5.87571, -2.46, 0.632769, -1.6, 0.610169, -1.58, -5.9887, -0.74, -4.49718, -0.0200005, -6.59887, -0.720001, -8.31638, -1.6, -7.41243)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_hke1n")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_2.tscn"

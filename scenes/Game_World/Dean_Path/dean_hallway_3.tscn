@@ -1,3 +1,57 @@
-[gd_scene format=3 uid="uid://cl4fbrsd125v3"]
+[gd_scene load_steps=5 format=3 uid="uid://cl4fbrsd125v3"]
+
+[ext_resource type="Texture2D" uid="uid://c3dx3tngmp0ck" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Hallway 3 - npc gives directions.png" id="1_ts8t1"]
+[ext_resource type="Texture2D" uid="uid://oeo4mikxqrvt" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Hallway 3 - double doors open.png" id="2_6vvi0"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="3_jwijq"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="4_shuiw"]
 
 [node name="DeanHallway3" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_ts8t1")
+
+[node name="Background_DoubleDoorOpen" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_6vvi0")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="NPC_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("3_jwijq")
+transition_type = "npc"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/NPC_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-7.26, -7.77401, -7.72, -7.29944, -7.72, -6.39548, -8.6, -5.8983, -8.9, -4.65537, -8.82, -4.0452, -8.08, -3.81921, -8.26, -1.60452, -8.22, 0.384181, -8, 1.06215, -7.12, 1.33333, -6.9, 1.01695, -5.94, 0.99435, -6, 0.338983, -6.24, -0.0677967, -6.12, -4.0226, -5.22, -4.0678, -5.4, -5.10734, -6, -5.8983, -6.56, -6.14689, -6.56, -7.27684)
+
+[node name="CaveDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("3_jwijq")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_start.tscn"
+transition_type = "cave_door"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-15.1, -7.00565, -16.56, -5.8983, -17.5, -3.16384, -17.62, -0.497175, -17.96, 2.0113, -17.38, 5.42373, -17.4, 7.88701, -17.06, 10.1017, -16.7, 11.1186, -9.26, 1.26554, -9.5, 0.429379, -9.44, -1.08475, -10.9, -4.79096, -11.12, -6.71186, -12.12, -8.0678, -13.5, -8.29379)
+
+[node name="DoubleDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("3_jwijq")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_battle_arena_entrance.tscn"
+transition_type = "double_door"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/DoubleDoor_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.36, -8.22599, 2.76, -8.29379, 2.74, -0.610169, -5.4, -0.632769, -5.4, -4, -5.12, -4.0226, -5.38, -5.31073)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("4_shuiw")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_2.tscn"

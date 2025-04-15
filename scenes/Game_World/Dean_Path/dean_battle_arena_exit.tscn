@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://dbrsqijh523xd"]
+[gd_scene load_steps=5 format=3 uid="uid://dbrsqijh523xd"]
+
+[ext_resource type="Texture2D" uid="uid://e26iv85e5eva" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_First/Player turns back to arena exit (this door is the exit that they entered through).PNG" id="1_ryqhk"]
+[ext_resource type="Texture2D" uid="uid://bxg5l1fnt8ctc" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_Final/Arena exit sealed - cannot leave the arena (bad ending).png" id="2_jqjul"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="3_56h58"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="4_gperp"]
 
 [node name="DeanBattleArenaExit" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_ryqhk")
+
+[node name="Background_ExitBlocked" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_jqjul")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Door_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("3_56h58")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_battle_arena_entrance.tscn"
+transition_type = "door"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Door_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-11.72, 7.20904, -11.5, 3.09605, -10.36, -0.971751, -8.38, -4.18079, -6.22, -6.30508, -3.92, -7.77401, -1.26, -8.45198, 1.72, -8.15819, 5.18, -6.46328, 7.54, -3.59322, 9.22, 0.655367, 9.78, 4.81356, 9.6, 7.16384, 6.32, 7.34463, -10.22, 7.34463)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("4_gperp")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_battle_arena.tscn"

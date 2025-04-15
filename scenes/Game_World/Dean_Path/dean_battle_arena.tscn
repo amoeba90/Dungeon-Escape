@@ -1,3 +1,87 @@
-[gd_scene format=3 uid="uid://orw0vsh03su8"]
+[gd_scene load_steps=12 format=3 uid="uid://orw0vsh03su8"]
+
+[ext_resource type="Texture2D" uid="uid://d0qavp0e6tkay" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_First/Dungeon leader voice says return to waiting area before round 2 (due to time .PNG" id="1_4nqin"]
+[ext_resource type="Texture2D" uid="uid://b0sxlatjp484d" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_First/Round 1 begins (slime enemy).png" id="2_5800x"]
+[ext_resource type="Texture2D" uid="uid://d1r0xldmls4g" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_First/Player hits slime with hammer.png" id="3_waa45"]
+[ext_resource type="Texture2D" uid="uid://c7qsk1xkcgvjm" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_First/Slime is smushed.png" id="4_fr4di"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_7dkvg"]
+[ext_resource type="Texture2D" uid="uid://dyk3lwg70eg0y" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_Final/Werewolf_battle_begins.png" id="5_lk6rt"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_gilrs"]
+[ext_resource type="Texture2D" uid="uid://crsmb86u8dpui" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_Final/Werewolf moves closer-tries to attack.png" id="6_hkclk"]
+[ext_resource type="Texture2D" uid="uid://dgspj6832808m" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_Final/Player throws potion.png" id="7_7hgpt"]
+[ext_resource type="Texture2D" uid="uid://bf72v3isndwrm" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_Final/Potion shatters - poisons werewolf.png" id="8_0yy55"]
+[ext_resource type="Texture2D" uid="uid://bkhowdycoipfg" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle_Arena_Final/Poisoned werewolf dies.png" id="9_ppntl"]
 
 [node name="DeanBattleArena" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Empty" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("1_4nqin")
+
+[node name="Background_Slime" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("2_5800x")
+
+[node name="Background_SlimeHit" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_waa45")
+
+[node name="Background_SlimeDead" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_fr4di")
+
+[node name="Background_WolfLeft" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_lk6rt")
+
+[node name="Background_WolfRight" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("6_hkclk")
+
+[node name="Background_WolfThrow" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("7_7hgpt")
+
+[node name="Background_WolfHit" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("8_0yy55")
+
+[node name="Background_WolfDead" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(1920, 1080)
+texture = ExtResource("9_ppntl")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Slime_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_7dkvg")
+transition_type = "slime"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Slime_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-1.96, -3.9548, -2.6, -1.69492, -4.92, 2.73446, -5.16, 4.33898, -5.44, 5.01695, -6.92, 5.67232, -7.22, 6.39548, -6.78, 7.05085, -5.64, 7.20904, -4.94, 7.16384, -4.02, 7.86441, -3.18, 8.18079, -2.3, 8.40678, -0.16, 7.81921, 0.9, 7.54802, 2.94, 7.09605, 3.58, 6.59887, 3.96, 5.44633, 3.74, 4.56497, 3.02, 3.86441, 1.82, 3.20904, 0.92, 1.87571)
+
+[node name="Wolf_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_7dkvg")
+transition_type = "wolf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Wolf_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-7.74, 11.1412, -7, 10.6441, -6.32, 10.4633, -5.5, 9.87571, -5, 9.06215, -3.08, 2.84746, -2.04, 0.519774, -3.08, -0.949153, -4.94, 3.02825, -4.38, 4.54237, -5.06, 6.0339, -6.76, 5.19774, -7.38, 2.80226, -6.46, -1.51412, -5.3, -3.02825, -4.38, -5.46893, -3.24, -6.35028, -3.68, -8.13559, -0.32, -8.83616, 2.1, -8.18079, 4.32, -5.76271, 6.06, -0.903955, 8.54, 4.31638, 8.54, 7.45763, 8.08, 6.50848, 7.44, 7.68362, 5.58, 6.53107, 5.96, 4.47458, 2.88, 0, 2.16, 0.99435, 3.76, 6.87006, 4.76, 8.65537, 4.96, 9.51412, 5.74, 10.1243, 6.72, 10.2373, 7.34, 10.7345, 7.2, 11.2768, 3.36, 11.1412, 3.06, 9.60452, 0.0199986, 4.40678, -3.68, 9.71751, -3.68, 11.0508, -4.72, 11.5706, -7.34, 11.6836)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_gilrs")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_battle_arena_exit.tscn"

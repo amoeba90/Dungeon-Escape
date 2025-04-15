@@ -1,3 +1,68 @@
-[gd_scene format=3 uid="uid://bx3ki4dwaovay"]
+[gd_scene load_steps=7 format=3 uid="uid://bx3ki4dwaovay"]
+
+[ext_resource type="Texture2D" uid="uid://deavyb8yg2jsp" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Entrance ahead - before taking hammer.png" id="1_jb3v4"]
+[ext_resource type="Texture2D" uid="uid://dgp8yi50girun" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Battle arena entrance ahead (after taking hammer).png" id="2_hedni"]
+[ext_resource type="Texture2D" uid="uid://cufx31if2jekm" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/Wizard offers potion after player returns to waiting area.png" id="3_760f3"]
+[ext_resource type="Texture2D" uid="uid://bbvgppy4ghxsx" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Double_Doors/After taking potion from wizard.PNG" id="4_biqbm"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_ccx23"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_ohn0g"]
 
 [node name="DeanBattleArenaEntrance" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Hammer" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_jb3v4")
+
+[node name="Background_HammerTaken" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_hedni")
+
+[node name="Background_WizardPotion" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_760f3")
+
+[node name="Background_Wizard" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_biqbm")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Hammer_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_ccx23")
+transition_type = "hammer"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Hammer_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.28, 0.58757, -15.4, 0.429379, -15.46, 2.0339, -14.72, 2.19209, -14.48, 7.57062, -13.66, 7.68362, -13.66, 2.28249, -13.12, 2.46328)
+
+[node name="ArenaDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_ccx23")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_battle_arena.tscn"
+transition_type = "arena_door"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/ArenaDoor_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(9.56, 7.11864, 5.76, 7.29944, -11.02, 7.29944, -11.68, 7.11864, -11.7, 4.74576, -11.3, 2.0339, -10.6, -0.158192, -9.72, -2.1017, -8.26, -4.29379, -6.62, -5.9435, -5.4, -6.93785, -3.58, -7.84181, -1.98, -8.22599, -0.52, -8.40678, 1.16, -8.24859, 3.14, -7.61582, 4.76, -6.59887, 6.34, -5.08475, 7.66, -3.29944, 8.76, -0.971751, 9.36, 1.60452, 9.7, 4.0226)
+
+[node name="Wizard_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_ccx23")
+transition_type = "wizard"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Wizard_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(13.9, 11.2316, 13.5, 10.5311, 13.24, 9.40113, 12.12, 6.30509, 11.6, 5.17514, 11.82, 3.41243, 11.62, 1.71751, 12.44, 3.07345, 13.08, 4.36158, 13.64, 4.67797, 14.18, 3.66102, 14.18, 3.00565, 13.2, 1.8983, 11.84, 0.0451975, 11.32, -0.429379, 11.44, -1.33333, 10.76, -1.76271, 10.42, -3.36723, 10.52, -4.99435, 9.38, -3.45763, 9.06, -2.48588, 8.12, -2.19209, 7.92, -1.62712, 8.16, -1.28814, 8.68, -0.768362, 6.84, -0.0903959, 6.6, -0.225988, 6.44, -1.78531, 6.78, -2.46328, 6.54, -3.09605, 6.08, -3.27684, 5.56, -3.02825, 5.32, -2.57627, 5.38, -2.0791, 5.78, -1.69492, 6.02, -1.44633, 6.18, -0.0903959, 5.88, 0.361582, 5.8, 0.858757, 6.1, 2.0113, 6.54, 2.12429, 6.56, 4.47458, 6.94, 6.73446, 7.18, 9.01695, 7.38, 11.2994, 7.56, 12.4972, 7.88, 12.0904, 7.76, 10.5537, 6.96, 1.9209, 8.32, 1.46893, 8.8, 2.35028, 8.8, 5.58192, 8.3, 7.75141, 8.12, 10.3503, 7.76, 12.3842, 8.5, 12.0904, 9.56, 12.0226, 12.02, 12.0226, 13.74, 11.7288)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_ohn0g")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_3.tscn"
