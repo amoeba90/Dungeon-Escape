@@ -14,7 +14,7 @@ func _ready():
 # Called when input is detected within this Area2D
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):  # Detect left mouse click
-
+		
 		play_custom_sound() # Play sound for door/arrow
 		
 		if next_scene_path.strip_edges():

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb62cyc5m5whq"]
+
+[ext_resource type="Script" path="res://scenes/Game_World/test_fade.gd" id="1_ksdrl"]
+
+[node name="TestFade" type="Node2D"]
+script = ExtResource("1_ksdrl")

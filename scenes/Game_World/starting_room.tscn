@@ -50,7 +50,6 @@ polygon = PackedVector2Array(643, 720, 674, 305, 707, 185, 744, 126, 792, 80, 86
 layer = -1
 
 [node name="FadeOverlay" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
