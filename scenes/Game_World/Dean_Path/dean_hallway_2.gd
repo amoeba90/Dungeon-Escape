@@ -19,5 +19,7 @@ func handle_transition(type: String) -> void:
 			$Background/Background_Original.visible = false # hide original visual
 			$Background/Background_RightDoorOpen.visible = true # show right door open visual
 		"double_door":
-			$Background/Background_Original.visible = false # hide original visual
-			$Background/Background_DoubleDoorOpen.visible = true # show right door open visual
+			if "key" in SaveSystem.save_data["inventory"]:
+				$Background/Background_Original.visible = false # hide original visual
+				$Background/Background_DoubleDoorOpen.visible = true # show right door open visual
+				# DialogueManager.start_dialogue([{"text": "The door is locked. Need a key to open"}])

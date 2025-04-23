@@ -1,3 +1,59 @@
-[gd_scene format=3 uid="uid://bx7comvocqnlk"]
+[gd_scene load_steps=7 format=3 uid="uid://bx7comvocqnlk"]
+
+[ext_resource type="Texture2D" uid="uid://bxajyid117fp4" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/Right_Cave_-_Ghosts_Blocking_Torch.png" id="1_h61mp"]
+[ext_resource type="Texture2D" uid="uid://b536y5yn55uxp" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/Player shines crystal at ghosts.png" id="2_gj2dg"]
+[ext_resource type="Texture2D" uid="uid://n42wp2kifhx1" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/Crystal light destroys ghosts.png" id="3_ena48"]
+[ext_resource type="Texture2D" uid="uid://csm0fc1p65sww" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/After player takes torch (now must return to crossroads).png" id="4_i8l0a"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_4hn56"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_8upsx"]
 
 [node name="DeanCaveRight" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_h61mp")
+
+[node name="Background_GhostHit" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_gj2dg")
+
+[node name="Background_GhostDead" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_ena48")
+
+[node name="Background_TorchTaken" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_i8l0a")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Ghost_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_4hn56")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_left.tscn"
+transition_type = "ghost"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Ghost_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-10.22, 5.87571, -10.72, 4.13559, -10.96, 0.677966, -12.44, -1.12994, -13.1, -4.79096, -11.76, -8.85876, -9.58, -8.38418, -9.26, -6.23729, -10.82, -2.16949, -9.96, 2.14689, -10.18, 5.58192, -8.34, 4.63277, -7.94, 2.50847, -7.28, 1.24294, -4.64, -5.87571, -2.56, -6.82486, -1.84, -5.51412, -2.24, -3.07345, -5.46, 0.564972, -7.4, 2.66667, -8.12, 4.63277, 2.2, 1.01695, 2.28, -0.610169, 1.96, -1.71751, -0.700001, -4.70056, -0.74, -7.27684, 0.5, -9.10734, 2.14, -9.40113, 2.54, -6.19209, 2.18, -2.53107, 2.72, -0.271187, 2.46, 1.06215, 5.88, 1.69491, 5.96, 0.248588, 5.46, -1.10734, 6.7, -6.84746, 8.3, -7.9774, 9.06, -7.11864, 8.8, -4.99435, 6.48, -1.49153, 6.4, 0.429379, 6.38, 2.14689, 2, 1.15254)
+
+[node name="Torch_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("5_4hn56")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_boss.tscn"
+transition_type = "torch"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Torch_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-8.12, -2.96045, -8.9, -3.34463, -8.02, -6.1017, -8.7, -6.91525, -8.26, -8.79096, -7.24, -9.26554, -6.2, -8.65537, -5.78, -7.75141, -5.78, -6.73446, -7.14, -6.0113)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_8upsx")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"

@@ -1,6 +1,8 @@
 # pause.gd
 extends Control
 
+signal pause_menu_closed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -9,8 +11,12 @@ func _on_Resume_Button_pressed():
 	toggle_pause_menu()
 
 func toggle_pause_menu():
+	var was_visible = self.visible
 	self.visible = !self.visible # toggle visibility
 	get_tree().paused = self.visible # pause/unpause game tree
+	
+	if was_visible: 
+		emit_signal("pause_menu_closed")
 
 func _on_Save_Button_pressed():
 	SaveSystem.save_game()

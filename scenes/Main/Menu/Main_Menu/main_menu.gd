@@ -26,13 +26,13 @@ func _on_new_game_button_pressed():
 		"room_states": {}
 	}
 	SaveSystem.save_game() # save initial game state
-	# start game by transitioning to first room
-	GameUtils.change_scene(SaveSystem.save_data["current_room"])
+
+	get_tree().change_scene_to_file("res://scenes/Main/main.tscn")
 
 func _on_continue_button_pressed():
 	var loaded_data = SaveSystem.load_game()
 	if loaded_data != null and "current_room" in SaveSystem.save_data:
-		GameUtils.change_scene(SaveSystem.save_data["current_room"])
+		get_tree().change_scene_to_file("res://scenes/Main/main.tscn")
 	else:
 		print("Failed to load save data")
 

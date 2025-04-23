@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://vstgi7vgh040"]
 
-[ext_resource type="Texture2D" uid="uid://cv83knwlwqxk8" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Zombie_sees_you.png" id="1_tm48k"]
-[ext_resource type="Texture2D" uid="uid://cp2lqp653y6x1" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Zombie approaches.png" id="2_6sliu"]
-[ext_resource type="Texture2D" uid="uid://dj3cvvkiye7lk" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/You slash zombie with sword.png" id="3_sbwc5"]
-[ext_resource type="Texture2D" uid="uid://ig2c84csn8yv" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Sword hitting zombie.png" id="4_bysfn"]
+[ext_resource type="Texture2D" uid="uid://dnx7sie86teae" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/cave_crossroads.png" id="1_qprxl"]
+[ext_resource type="Texture2D" uid="uid://7d655rtdo8cp" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Web starting to burn (after getting torch).png" id="2_rv6cg"]
+[ext_resource type="Texture2D" uid="uid://fv7ldbc5sq5r" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Web almost gone.png" id="3_m7bks"]
+[ext_resource type="Texture2D" uid="uid://cejhmvrd0e3cq" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/cave_crossroads (after burning web).png" id="4_n4rkf"]
 [ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_ke1f2"]
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_u1yav"]
 
@@ -13,56 +13,56 @@
 
 [node name="Background_Original" type="Sprite2D" parent="Background"]
 position = Vector2(960, 540)
-texture = ExtResource("1_tm48k")
+texture = ExtResource("1_qprxl")
 
 [node name="Background_WebBurnStart" type="Sprite2D" parent="Background"]
 visible = false
 position = Vector2(960, 540)
-texture = ExtResource("2_6sliu")
+texture = ExtResource("2_rv6cg")
 
 [node name="Background_WebBurnMiddle" type="Sprite2D" parent="Background"]
 visible = false
 position = Vector2(960, 540)
-texture = ExtResource("3_sbwc5")
+texture = ExtResource("3_m7bks")
 
 [node name="Background_WebBurnEnd" type="Sprite2D" parent="Background"]
 visible = false
 position = Vector2(960, 540)
-texture = ExtResource("4_bysfn")
+texture = ExtResource("4_n4rkf")
 
 [node name="InteractiveAreas" type="Node2D" parent="."]
 
-[node name="ZombieAlive_Area" type="Area2D" parent="InteractiveAreas"]
+[node name="CaveLeft_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("5_ke1f2")
-transition_type = "zombie_alive"
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_left.tscn"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/ZombieAlive_Area"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveLeft_Area"]
 position = Vector2(1166, 256)
 scale = Vector2(50, 44.25)
-polygon = PackedVector2Array(-5.7, 9.49152, -5.7, 8.79096, -5, 6.1017, -4.4, 4.38418, -4.14, 1.64972, -4.16, -1.12994, -4.06, -1.58192, -4.46, -2.1017, -4.8, -3.54802, -4.58, -4.51977, -4.3, -5.19774, -4.92, -6.77966, -4.5, -7.52542, -4.04, -7.54802, -3.56, -7.27684, -3.22, -6.57627, -3.26, -5.51412, -3.32, -5.12994, -2.5, -4.0226, -2.26, -2.75706, -2, -0.723164, -1.5, 1.17514, -0.92, 1.17514, -1.02, 1.74011, -0.780001, 2.28249, -1.02, 2.73446, -1.2, 3.18644, -0.980001, 4.58757, -1.1, 6.59887, -1.12, 7.9774, -0.880001, 8.65537, -0.440001, 9.42373, -0.32, 9.85311, -0.800001, 9.9661, -1.66, 9.58192, -1.9, 7.72881, -1.84, 4.11299, -2.22, 2.93785, -2.9, 1.69491, -3.3, 3.9774, -3.88, 5.49153, -4.56, 7.34463, -4.86, 8.13559, -4.82, 8.76836, -4.36, 9.17514, -3.96, 9.44633, -4.52, 9.60452)
+polygon = PackedVector2Array(-18.12, 4.0452, -18.38, 2.35028, -17.12, -0.316384, -16.3, -1.01695, -15.18, -1.46893, -14, -2.0791, -13.46, -2.0791, -13, -1.87571, -11.58, -1.51412, -10.6, -1.31073, -9.68, -0.135593, -8.96, 1.17514, -8.72, 2.39548, -8.9, 3.50282, -8.76, 4.15819, -11.26, 4.63277, -13.6, 4.56497, -16.22, 4.20339)
 
-[node name="ZombieDead_Area" type="Area2D" parent="InteractiveAreas"]
+[node name="CaveBoss_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("5_ke1f2")
-transition_type = "zombie_dead"
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_boss.tscn"
+transition_type = "boss_web"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/ZombieDead_Area"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveBoss_Area"]
 position = Vector2(1166, 256)
 scale = Vector2(50, 44.25)
-polygon = PackedVector2Array(-14.18, 6.53107, -14, 5.46893, -13.02, 4.97175, -11.86, 5.31073, -11.56, 5.08475, -11.66, 1.85311, -12.3, 1.03955, -12.12, 0.316384, -11.1, 0.248588, -10.94, 1.53672, -10.82, 4.33898, -8.88, 4.0452, -6.08, 3.54802, -6.32, 2.80226, -5, 2.91525, -4.7, 3.29943, -2.68, 3.11864, -0.24, 3.41243, 1.24, 2.71186, 1.6, 2.91525, 1.18, 4.13559, -0.24, 4.31638, -3.7, 4.11299, -5.84, 5.15254, -3.14, 6.0339, -0.68, 7.34463, 0.18, 7.72881, 0.92, 6.73446, 0.959999, 8.70056, -0.300001, 8.49717, -3.7, 7.05085, -5.58, 6.59887, -8.74, 6.28249, -9.4, 6.73446, -10.66, 7.20904, -12.1, 6.50848, -13.54, 7.23164)
+polygon = PackedVector2Array(-8.76, 4.18079, -8.34, 2.35028, -8.14, -0.99435, -6.98, -4.47458, -6.36, -5.53672, -4.84, -6.62147, -2.72, -7.02825, -0.220001, -7.70621, 1.28, -7.36723, 3.16, -5.06215, 4.16, -4.18079, 5.8, -0.949153, 5.9, 1.08475, 6.84, 4.63277, 4.98, 4.76836, 1.7, 4, -0.440001, 4.11299, -2.68, 4.58757, -5.06, 4.47458, -6.9, 4.11299)
 
-[node name="CaveDoor_Area" type="Area2D" parent="InteractiveAreas"]
+[node name="CaveRight_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("5_ke1f2")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"
-transition_type = "wolf"
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_right.tscn"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveRight_Area"]
 position = Vector2(1166, 256)
 scale = Vector2(50, 44.25)
-polygon = PackedVector2Array(-10.68, -2.14689, -9.3, -6.75706, -8.16, -8.0452, -6.14, -8.85876, -5.34, -9.53672, -5.02, -9.87571, 5.26, -9.69492, 6.1, -8.74576, 6.9, -7.54802, 7.86, -6.48588, 8.22, -5.08475, 8.76, -3.00565, 8.7, -1.9661, 7.42, -1.9661, 5.94, -2.53107, 2.66, -2.21469, 0.299999, -2.35028, -2, -2.82486, -3.86, -3.02825, -6.2, -2.57627, -8.24, -2.23729)
+polygon = PackedVector2Array(6.94, 4.65537, 7.26, 3.07345, 7.06, 1.64972, 7.56, 0.451978, 8.6, -1.08475, 9.3, -1.53672, 11.42, -2.0113, 12.1, -2.37288, 14.02, -1.42373, 15.56, -0.225988, 16.64, 2.12429, 16.32, 4.09039, 13.98, 4.49718, 10.48, 4.49718)
 
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_u1yav")]
 position = Vector2(960, 1000)
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_3.tscn"
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_start.tscn"

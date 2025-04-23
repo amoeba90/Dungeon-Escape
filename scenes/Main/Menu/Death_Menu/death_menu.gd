@@ -6,9 +6,9 @@ func _ready() -> void:
 	pass
 
 func _on_New_Game_Button_pressed():
-	
+	pass
 func _on_Try_Again_Button_pressed():
-	
+	pass
 
 func _on_Settings_Button_pressed():
 	print("Settings button pressed") # temp debug line

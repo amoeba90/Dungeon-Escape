@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://lwey78t5jomk"]
+[gd_scene load_steps=6 format=3 uid="uid://lwey78t5jomk"]
 
 [ext_resource type="Script" path="res://scenes/Main/main.gd" id="1_gm51m"]
 [ext_resource type="PackedScene" uid="uid://dr1n5j1ypnxye" path="res://scenes/Systems/save_system.tscn" id="2_bfgd7"]
+[ext_resource type="PackedScene" uid="uid://buwklbitffh" path="res://scenes/Systems/dialogue_ui.tscn" id="3_n54c3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mdna"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fq55"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Main" type="Node"]
 script = ExtResource("1_gm51m")
@@ -10,20 +31,63 @@ script = ExtResource("1_gm51m")
 
 [node name="GameWorld" type="Node2D" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Border" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6mdna")
 
 [node name="Top_Bar" type="HBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(1860, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -930.0
+offset_top = 30.0
+offset_right = 930.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
 
-[node name="Menu_Button" type="Button" parent="UI/Top_Bar"]
+[node name="Pause_Button" type="Button" parent="UI/Top_Bar"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fq55")
+text = "Pause"
 
-[node name="Inventory_Bar" type="HBoxContainer" parent="UI/Top_Bar"]
+[node name="Spacer" type="Control" parent="UI/Top_Bar"]
+custom_minimum_size = Vector2(1500, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Dialogue_Box" type="HBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Inventory_Button" type="Button" parent="UI/Top_Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fq55")
+text = "Inventory"
+
+[node name="DialogueUi" parent="UI" instance=ExtResource("3_n54c3")]
+mouse_filter = 2
 
 [node name="Background_Music" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="UI/Top_Bar/Pause_Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/Top_Bar/Inventory_Button" to="." method="_on_inventory_button_pressed"]

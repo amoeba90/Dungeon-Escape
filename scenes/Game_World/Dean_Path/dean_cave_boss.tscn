@@ -1,3 +1,63 @@
-[gd_scene format=3 uid="uid://pe3tim0huveb"]
+[gd_scene load_steps=8 format=3 uid="uid://pe3tim0huveb"]
+
+[ext_resource type="Texture2D" uid="uid://3u2dv4ebd8qk" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Boss/Spider_Boss_Room_Entered.png" id="1_fdi6k"]
+[ext_resource type="Texture2D" uid="uid://7ybj3gxkdod1" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Boss/Spider tries to attack.png" id="2_unvvn"]
+[ext_resource type="Texture2D" uid="uid://c2w887t2o5osa" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Boss/Torch swung at spider.png" id="3_8kifq"]
+[ext_resource type="Texture2D" uid="uid://bwkq3yggdwbnj" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Boss/Spider is burning.png" id="4_0hrx6"]
+[ext_resource type="Texture2D" uid="uid://dfa3tonbeq2s5" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Boss/Spider is burned and dies.png" id="5_gbu8f"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="6_4ysfw"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="7_37k8k"]
 
 [node name="DeanCaveBoss" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_fdi6k")
+
+[node name="Background_SpiderAttack" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_unvvn")
+
+[node name="Background_SpiderHit" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_8kifq")
+
+[node name="Background_SpiderFall" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_0hrx6")
+
+[node name="Background_SpiderDead" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_gbu8f")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="CaveDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("6_4ysfw")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_escape.tscn"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-10.78, -2.1017, -10.36, -2.75706, -9.74, -5.49153, -9.2, -6.96045, -8.12, -8.0226, -6.36, -8.88136, -5.2, -9.62712, -4.9, -9.87571, 5.34, -9.78531, 6.36, -8.31638, 8.06, -6.35028, 8.22, -4.85876, 8.7, -3.34463, 8.66, -2.0339, 7.6, -1.9661, 6, -2.46328, 3.4, -2.28249, 0.9, -2.21469, -1.9, -2.80226, -4.46, -2.96045, -7.04, -2.32768, -9.44, -2.12429)
+
+[node name="Spider_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("6_4ysfw")
+transition_type = "spider"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Spider_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.52, 10.5085, -5.5, 8.72316, -5.66, 6.77966, -5.56, 4.81356, -5.66, 3.29943, -5.16, 1.01695, -4.78, -1.76271, -4.9, -2.1017, -5.3, -1.42373, -5.64, 0.655367, -5.84, 1.35593, -6.04, 2.84746, -6, -0.632769, -7.54, 1.24294, -9.02, 3.75141, -9.7, 4.97175, -10.3, 6.66667, -9.78, 4.45198, -8.7, 1.42373, -7.1, -0.858757, -6.46, -2.0339, -7.3, -1.87571, -9, -0.271187, -9.76, 1.19774, -9.94, 2.23729, -10.02, 1.12994, -9, -1.33333, -7.7, -2.48588, -6.22, -3.25424, -5.56, -3.16384, -5.28, -4.49718, -4.5, -4.61017, -3.84, -4.15819, -3.62, -5.42373, -2.18, -6.37288, -0.900002, -7.16384, -0.1, -6.71186, 1.36, -6.21469, 2.24, -4.65537, 2.26, -4.15819, 3.26, -4.81356, 3.84, -4.63277, 4.24, -3.50282, 5.84, -3.07345, 7.34, -1.78531, 8.16, -0.338984, 8.7, 1.67232, 8.6, 2.19209, 7.96, 0.429379, 6.3, -1.71751, 4.78, -2.25989, 6.6, 0.225988, 7.8, 2.59887, 8.46, 4.88136, 8.86, 6.39548, 8.1, 4.63277, 7.06, 2.89266, 6.44, 1.44633, 4.58, -0.768362, 4.7, 2.89266, 4.42, 1.40113, 3.72, -1.67232, 3.44, -2.23729, 3.34, -1.80791, 3.76, 1.08475, 4.2, 3.41243, 4.28, 6.75706, 4.06, 9.06215, 4.12, 10.5989, 3.74, 8.61017, 2.9, 2.75706, 2.26, -0.677966, 1.94, 0.99435, 1.3, 1.35593, 0.939999, 1.35593, 0.76, 0.81356, 0.619999, 2.16949, -0.66, 3.41243, -0.960001, 3.11864, -0.220001, 1.26554, -1.26, 1.35593, -1.36, 1.8983, -0.880001, 3.57062, -1.64, 3.50282, -2.66, 1.49153, -3.2, 1.44633, -3.76, -0.655367, -4.36, 3.00565, -5, 7.63842)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("7_37k8k")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"

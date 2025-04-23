@@ -39,7 +39,7 @@ func handle_transition(type: String) -> void:
 				$Background/Background_LeverPull.visible = false
 				$Background/Background_RockFallStart.visible = true
 				# wait half a second
-				await get_tree().create_timer(1.0).timeout
+				await get_tree().create_timer(0.5).timeout
 				rocks_on_floor = true
 				
 				$Background/Background_RockFallStart.visible = false
@@ -50,4 +50,4 @@ func handle_transition(type: String) -> void:
 					"rocks_on_floor": true
 				}
 				SaveSystem.save_data["room_states"]["dean_rock_room"] = room_state
-				SaveSystem.save_game
+				SaveSystem.save_game()

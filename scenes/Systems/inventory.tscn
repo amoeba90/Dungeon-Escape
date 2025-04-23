@@ -1,0 +1,183 @@
+[gd_scene load_steps=5 format=3 uid="uid://emek2rkkyn8r"]
+
+[ext_resource type="Script" path="res://scenes/Systems/inventory.gd" id="1_15l2x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1aiql"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mepo"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la26l"]
+size = Vector2(145, 144)
+
+[node name="Inventory" type="Node2D"]
+position = Vector2(1710, 540)
+script = ExtResource("1_15l2x")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Panel" type="Panel" parent="Background"]
+custom_minimum_size = Vector2(330, 790)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1aiql")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="SlotsContainer" type="GridContainer" parent="Background/Panel/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Slot1" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot2" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot3" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot4" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot5" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot6" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot7" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot8" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot9" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="Slot10" type="Panel" parent="Background/Panel/MarginContainer/SlotsContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mepo")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Slot1_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot1_Area"]
+position = Vector2(-74, -307)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot2_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot2_Area"]
+position = Vector2(78, -308)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot3_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot3_Area"]
+position = Vector2(-75, -154)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot4_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot4_Area"]
+position = Vector2(79, -155)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot5_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot5_Area"]
+position = Vector2(-75, 1)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot6_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot6_Area"]
+position = Vector2(78, 0)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot7_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot7_Area"]
+position = Vector2(-75, 153)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot8_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot8_Area"]
+position = Vector2(78, 152)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot9_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot9_Area"]
+position = Vector2(-77, 308)
+shape = SubResource("RectangleShape2D_la26l")
+
+[node name="Slot10_Area" type="Area2D" parent="InteractiveAreas"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/Slot10_Area"]
+position = Vector2(79, 308)
+shape = SubResource("RectangleShape2D_la26l")

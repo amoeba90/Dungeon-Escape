@@ -9,7 +9,6 @@ signal choice_selected(choice_id)
 @onready var speaker_box = $CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/SpeakerBox
 @onready var speaker_label = $CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/SpeakerBox/MarginContainer/SpeakerLabel
 @onready var dialogue_text = $CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/MarginContainer/HBoxContainer/DialogueText
-@onready var continue_arrow = $CanvasLayer/DialogueContainer/VBoxContainer/DialogueBox/MarginContainer/HBoxContainer/ContinueArrow
 @onready var choices_panel = $CanvasLayer/ChoicesPanel
 @onready var choices_container = $CanvasLayer/ChoicesPanel/ChoicesContainer
 
@@ -25,31 +24,21 @@ func _ready():
 	# Hide elements initially
 	dialogue_container.visible = false
 	speaker_box.visible = false
-	continue_arrow.visible = false
 	choices_panel.visible = false
 	
 	# Set up input detection for the dialogue box
-	dialogue_box.gui_input.connect(_on_dialogue_input)
+	dialogue_container.gui_input.connect(_on_dialogue_input)
 	
-	# Setup arrow animation
-	setup_arrow_animation()
-
-func setup_arrow_animation():
-	var animation_player = AnimationPlayer.new()
-	continue_arrow.add_child(animation_player)
-	animation_player.name = "AnimationPlayer"
+	# add a full-screen inpupt blocker when dialogue is active
+	var input_blocker = Control.new()
+	input_blocker.name = "InputBlocker"
+	input_blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	input_blocker.anchor_right = 1.0
+	input_blocker.anchor_bottom = 1.0
+	input_blocker.visible = false
+	$CanvasLayer.add_child(input_blocker)
 	
-	var animation = Animation.new()
-	var track_index = animation.add_track(Animation.TYPE_VALUE)
-	animation.track_set_path(track_index, ":scale")
-	animation.track_insert_key(track_index, 0.0, Vector2(1, 1))
-	animation.track_insert_key(track_index, 0.5, Vector2(1.2, 1.2))
-	animation.track_insert_key(track_index, 1.0, Vector2(1, 1))
-	animation.loop_mode = Animation.LOOP_LINEAR
-	
-	var animation_library = AnimationLibrary.new()
-	animation_library.add_animation("pulse", animation)
-	animation_player.add_animation_library("", animation_library)
+	input_blocker.gui_input.connect(_on_dialogue_input)
 
 func _process(delta):
 	if is_typing:
@@ -60,25 +49,28 @@ func _process(delta):
 				next_char_timer = Timer.new()
 				next_char_timer.name = "NextCharTimer"
 				next_char_timer.one_shot = true
-				next_char_timer.timeout.connect(_display_next_char)
+				next_char_timer.timeout.connect(_type_next_character)
 				add_child(next_char_timer)
 				next_char_timer.start(display_speed)
 
-func _display_next_char():
+func _type_next_character():
 	if char_index < full_text.length():
 		char_index += 1
 		displayed_text = full_text.substr(0, char_index)
 		dialogue_text.text = displayed_text
 		
-		# Continue typing if not done
 		if char_index < full_text.length():
-			$NextCharTimer.start(display_speed)
+			# Set up timer for next character
+			var timer = Timer.new()
+			timer.one_shot = true
+			timer.wait_time = display_speed
+			timer.timeout.connect(func(): _type_next_character())
+			add_child(timer)
+			timer.start()
 		else:
 			# Typing finished
 			is_typing = false
 			can_advance = true
-			continue_arrow.visible = true
-			continue_arrow.get_node("AnimationPlayer").play("pulse")
 
 func _on_dialogue_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -89,24 +81,21 @@ func _on_dialogue_input(event):
 			dialogue_text.text = displayed_text
 			is_typing = false
 			can_advance = true
-			continue_arrow.visible = true
-			continue_arrow.get_node("AnimationPlayer").play("pulse")
 		elif can_advance:
 			# Advance to next dialogue line
 			DialogueManager.advance_dialogue()
 
 func start_dialogue(text, speaker=""):
+	$CanvasLayer/InputBlocker.visible = true
+	
+	print("Starting dialogue with text: " + text)
+	print ("Speaker: " + speaker)
 	# Reset variables
 	full_text = text
 	displayed_text = ""
 	char_index = 0
 	is_typing = true
 	can_advance = false
-	
-	# Hide the arrow until typing completes
-	continue_arrow.visible = false
-	if continue_arrow.has_node("AnimationPlayer"):
-		continue_arrow.get_node("AnimationPlayer").stop()
 	
 	# Show/hide speaker box based on whether there's a speaker
 	if speaker != "":
@@ -119,7 +108,7 @@ func start_dialogue(text, speaker=""):
 	dialogue_container.visible = true
 	
 	# Start typing effect
-	_display_next_char()
+	_type_next_character()
 
 func show_choices(choices):
 	# Clear existing choices
@@ -131,6 +120,23 @@ func show_choices(choices):
 		var button = Button.new()
 		button.text = choice.text
 		button.custom_minimum_size = Vector2(300, 50)
+		
+		#style the choice buttons
+		var button_style = StyleBoxFlat.new()
+		button_style.bg_color = Color(1, 1, 1, 1) # white background
+		button_style.border_width_left = 2
+		button_style.border_width_top = 2
+		button_style.border_width_right = 2
+		button_style.border_width_bottom = 2
+		button_style.border_color = Color(0, 0, 0, 1)  # Black border
+		button_style.corner_radius_top_left = 5
+		button_style.corner_radius_top_right = 5
+		button_style.corner_radius_bottom_left = 5
+		button_style.corner_radius_bottom_right = 5
+		
+		button.add_theme_stylebox_override("normal", button_style)
+		button.add_theme_color_override("font_color", Color(0, 0, 0, 1)) # black text
+		
 		button.pressed.connect(_on_choice_selected.bind(choice.id))
 		choices_container.add_child(button)
 	
@@ -147,5 +153,4 @@ func _on_choice_selected(choice_id):
 func hide_dialogue():
 	dialogue_container.visible = false
 	choices_panel.visible = false
-	if continue_arrow.has_node("AnimationPlayer"):
-		continue_arrow.get_node("AnimationPlayer").stop()
+	$CanvasLayer/InputBlocker.visible = false

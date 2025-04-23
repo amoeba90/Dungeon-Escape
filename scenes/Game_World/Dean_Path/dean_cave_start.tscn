@@ -68,7 +68,7 @@ polygon = PackedVector2Array(-14.18, 6.53107, -14, 5.46893, -13.02, 4.97175, -11
 position = Vector2(-149, 169)
 script = ExtResource("7_hh02r")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"
-transition_type = "wolf"
+transition_type = "cave_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
 position = Vector2(1166, 256)
