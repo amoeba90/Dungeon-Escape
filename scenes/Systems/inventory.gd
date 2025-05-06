@@ -62,22 +62,42 @@ func display_item(slot_index, item_data):
 	# Clear any existing item texture
 	clear_slot(slot_index)
 	
-	# Create texture for item
+	# Convert string items to dictionary format if needed
+	if typeof(item_data) == TYPE_STRING:
+		var item_name = item_data.capitalize()
+		item_data = {
+			"id": item_data,
+			"name": item_name,
+			"description": "A " + item_data,
+			"icon_path": "res://assets/Sprites/Inventory/" + item_data + ".png"
+		}
+	
+	# Create texture rect with larger size
 	var texture_rect = TextureRect.new()
 	
-	# Check if icon_path exists
-	if "icon_path" in item_data and ResourceLoader.exists(item_data.icon_path):
+	# Try to load the icon
+	if item_data.has("icon_path") and ResourceLoader.exists(item_data.icon_path):
 		texture_rect.texture = load(item_data.icon_path)
 	else:
-		print("Warning: Item icon not found: ", item_data.get("icon_path", "No path specified"))
-		# Use a default texture or placeholder
+		print("Warning: Icon not found at: " + item_data.get("icon_path", "unknown path"))
+		# Create a placeholder if needed
 	
+	# Make the texture rect much larger to fill the entire slot
+	texture_rect.custom_minimum_size = Vector2(200, 200)  # Nearly fill the slot
 	texture_rect.expand = true
 	texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	texture_rect.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	texture_rect.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	
-	# Add to slot
+	# Center the texture rect in the slot
+	texture_rect.anchor_left = 0.5
+	texture_rect.anchor_top = 0.5
+	texture_rect.anchor_right = 0.5
+	texture_rect.anchor_bottom = 0.5
+	texture_rect.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	texture_rect.grow_vertical = Control.GROW_DIRECTION_BOTH
+	
+	# Add the texture rect directly to the slot (no container or label)
 	slot.add_child(texture_rect)
 
 func clear_slot(slot_index):

@@ -29,5 +29,9 @@ func _on_Settings_Button_pressed():
 	self.visible = false
 
 func _on_Main_Menu_Button_pressed():
+	# Important: Disable pause menu and unpause game BEFORE changing scenes
+	self.visible = false
 	get_tree().paused = false
+	
+	# Now change to main menu
 	GameUtils.change_scene("res://scenes/Main/Menu/Main_Menu/main_menu.tscn")

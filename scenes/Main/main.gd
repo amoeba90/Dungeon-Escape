@@ -20,17 +20,6 @@ func _ready():
 	_init_pause_menu()
 	_init_inventory()
 	
-	# Connect buttons if found
-	if has_node("UI/Top_Bar/Inventory_Button"):
-		inventory_button.pressed.connect(_on_inventory_button_pressed)
-	else:
-		print("Warning: Inventory button not found")
-		
-	if has_node("UI/Top_Bar/Pause_Button"):
-		pause_button.pressed.connect(_on_pause_button_pressed)
-	else:
-		print("Warning: Pause button not found")
-	
 	# Check if SceneChanger is in the middle of loading a specific room
 	if get_node_or_null("/root/SceneChanger") and SceneChanger.is_changing_scene:
 		# Don't load anything - SceneChanger will handle it
@@ -64,14 +53,30 @@ func _init_inventory():
 	inventory_instance.inventory_closed.connect(_on_inventory_closed)
 
 func _on_pause_button_pressed():	
-	# Show pause menu and pause game
-	pause_menu_instance.visible = true
-	get_tree().paused = true
+	print("Pause button pressed")
+	if pause_menu_instance:
+		pause_menu_instance.toggle_pause_menu()
+	else:
+		print("Error: pause_menu_instance is null")
 
 func _on_inventory_button_pressed():
-	# Toggle inventory visibility
-	inventory_instance.toggle_visibility()
-	is_inventory_open = !is_inventory_open
+	print("Inventory button pressed")
+	if inventory_instance:
+		# Load the inventory content before showing
+		inventory_instance.load_inventory()
+		
+		# Toggle visibility using inventory's own function
+		inventory_instance.toggle_visibility()
+		
+		# Update state tracking in Main
+		is_inventory_open = inventory_instance.is_visible
+		
+		var status_text = "closed"
+		if is_inventory_open:
+			status_text = "open"
+		print("Inventory toggled, is now: ", status_text)
+	else:
+		print("Error: inventory_instance is null")
 
 func _on_inventory_closed():
 	# Update button state
@@ -91,6 +96,13 @@ func change_room(new_room_scene: PackedScene):
 	
 	print("Changing to room: ", new_room_scene.resource_path)
 	
+	# Hide inventory if it's open when changing rooms
+	if is_inventory_open and inventory_instance:
+		inventory_instance.is_visible = false  # Set the state directly
+		inventory_instance.visible = false     # Hide it directly
+		inventory_instance.position = Vector2(2100, 540)  # Move it off screen
+		is_inventory_open = false
+	
 	# IMPORTANT: Properly clean up all existing rooms
 	for child in $GameWorld.get_children():
 		print("Removing existing room: ", child.name)
@@ -102,8 +114,3 @@ func change_room(new_room_scene: PackedScene):
 	# Add new room
 	var next_room = new_room_scene.instantiate()
 	$GameWorld.add_child(next_room)
-	
-	# If inventory is open, close it when changing rooms
-	if is_inventory_open:
-		inventory_instance.toggle_visibility()
-		is_inventory_open = false

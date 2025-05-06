@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Systems/settings_ui.gd" id="1_pbq36"]
 
 [node name="Settings" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,7 +144,6 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Apply_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
-visible = false
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Apply"
@@ -153,8 +153,8 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Back"
 
-[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_changed"]
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_music_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_changed"]
 [connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer/ResolutionOption" to="." method="_on_resolution_selected"]

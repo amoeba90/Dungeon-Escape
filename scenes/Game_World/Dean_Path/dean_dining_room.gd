@@ -57,13 +57,40 @@ func handle_transition(type: String) -> void:
 			elif drawer_open and not key_taken:
 				key_taken = true
 				
-				if not "key" in SaveSystem.save_data["inventory"]:
-					SaveSystem.save_data["inventory"].append("key")
+				# Create a proper item object
+				var key_item = {
+					"id": "key",
+					"name": "Key",
+					"description": "A key that might open a door somewhere.",
+					"icon_path": "res://assets/Sprites/Inventory/key.PNG"  # Update this path
+				}
+				
+				# Replace any existing key string with the new key object
+				var inventory = SaveSystem.save_data["inventory"]
+				var item_index = inventory.find("key")
+				if item_index != -1:
+					# Replace the string key with the new key item
+					inventory[item_index] = key_item
+					print("Replaced string 'key' with key_item dictionary")
+				else:
+					# Add the new key item
+					inventory.append(key_item)
+					print("Added new key_item dictionary to inventory")
+				
+				# Save room state
 				var room_state = {
 					"key_taken": true
 				}
 				SaveSystem.save_data["room_states"]["dean_dining_room"] = room_state
 				SaveSystem.save_game()
+				
+				print("Inventory contents after update: ", SaveSystem.save_data["inventory"])
+				
+				# Refresh inventory display if it exists
+				var main = get_node("/root/Main")
+				if main and main.inventory_instance:
+					main.inventory_instance.load_inventory()
+				
 				# dialogue
 				DialogueManager.start_dialogue([
 					{"text": "A key! I wonder what this opens?"}

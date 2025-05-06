@@ -24,6 +24,7 @@ Main="*res://scenes/Main/main.gd"
 SettingsManager="*res://scenes/Systems/settings_manager.gd"
 DialogueManager="*res://scenes/Systems/dialogue_manager.gd"
 SceneChanger="*res://scenes/Systems/scene_changer.tscn"
+InventoryUtils="*res://scenes/Systems/inventory_utils.gd"
 
 [display]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5qyc8nagc2c8"
-path="res://.godot/imported/Mace.PNG-e4fc288e565111719d2f62bfa71d77b6.ctex"
+path="res://.godot/imported/mace.PNG-9f68ee5a28860232454296938e3b4c83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Inventory/Mace.PNG"
-dest_files=["res://.godot/imported/Mace.PNG-e4fc288e565111719d2f62bfa71d77b6.ctex"]
+source_file="res://assets/Sprites/Inventory/mace.PNG"
+dest_files=["res://.godot/imported/mace.PNG-9f68ee5a28860232454296938e3b4c83.ctex"]
 
 [params]
 

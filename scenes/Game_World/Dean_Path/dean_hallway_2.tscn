@@ -58,7 +58,6 @@ polygon = PackedVector2Array(951, 598, 971, 118, 1232, 235, 1163, 845)
 [node name="DoubleDoor_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(498, -24)
 script = ExtResource("6_rnhep")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_3.tscn"
 transition_type = "double_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/DoubleDoor_Area"]
