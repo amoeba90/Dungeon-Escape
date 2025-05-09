@@ -3,6 +3,7 @@ extends Area2D
 @export var next_scene_path: String = ""  # Path to the next scene
 @export var sound_path: String = "" # Path to the sound file played
 @export var transition_type: String = "" # for specifying transition behavior
+@export var play_sound: bool = false
 var is_clicked = false  # Add this to prevent multiple clicks
 
 func _ready():
@@ -26,7 +27,12 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
 		if transition_type != "" and parent_scene.has_method("handle_transition"):
 			parent_scene.handle_transition(transition_type)
 		
-		play_custom_sound() # Play sound for door/arrow
+		# Play door/arrow sound
+		if sound_path.strip_edges() != "":
+			AudioManager.play_sfx(sound_path)
+		else:
+			# Default door sound if none specified
+			AudioManager.play_sfx("res://assets/Audio/SFX/door.wav")
 		
 		if next_scene_path.strip_edges():
 			SceneChanger.change_scene(next_scene_path)

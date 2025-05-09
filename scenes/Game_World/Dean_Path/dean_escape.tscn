@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bibqbux8bpe4x"]
 
-[ext_resource type="Texture2D" uid="uid://d0kjirwwpeb51" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Boss/Escape/Player_Escaped_Dungeon_(good ending).png" id="1_m8tsv"]
+[ext_resource type="Texture2D" uid="uid://d0kjirwwpeb51" path="res://assets/Sprites/Rooms/Escape/Player_Escaped_Dungeon_(good ending).png" id="1_m8tsv"]
 
 [node name="DeanEscape" type="Node2D"]
 

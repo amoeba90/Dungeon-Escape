@@ -42,7 +42,7 @@ polygon = PackedVector2Array(-6, -5.79661, -5.46, -7.28814, -4.6, -8.64407, -3.3
 position = Vector2(498, -24)
 collision_layer = 2
 script = ExtResource("7_v48dx")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_entrance_blocked.tscn"
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1.tscn"
 transition_type = "right_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/RightDoor_Area"]

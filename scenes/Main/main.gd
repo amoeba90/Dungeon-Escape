@@ -1,11 +1,11 @@
 # main.gd
 extends Node
 
-# references to ui elements
+# References to ui elements
 @onready var inventory_button = $UI/Top_Bar/Inventory_Button
 @onready var pause_button = $UI/Top_Bar/Pause_Button
 
-# referencces to scenes
+# Referencces to scenes
 var inventory_scene = preload("res://scenes/Systems/inventory.tscn")
 var pause_menu_scene = preload("res://scenes/Main/Menu/Pause_Menu/pause.tscn")
 

@@ -1,6 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx3xbqbqbf7wi"]
+[gd_scene load_steps=8 format=3 uid="uid://bx3xbqbqbf7wi"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu/Pause_Menu/pause.gd" id="1_550y5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f1a2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myks8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjgdn"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u8pq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2fkb"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivenc"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Pause_Menu" type="Control"]
 process_mode = 3
@@ -13,71 +75,88 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_550y5")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0f1a2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.627451)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 250
-theme_override_constants/margin_top = 250
-theme_override_constants/margin_right = 250
-theme_override_constants/margin_bottom = 250
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Pause_Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Pause_Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Paused"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Game Paused"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_myks8")
 
-[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Resume_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+[node name="Resume_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_pjgdn")
 text = "Resume"
 
-[node name="Save_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+[node name="Save_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_5u8pq")
 text = "Save Game"
 
-[node name="Settings_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+[node name="Settings_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2fkb")
 text = "Settings"
 
-[node name="Main_Menu_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+[node name="Main_Menu_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ivenc")
 text = "Main Menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Resume_Button" to="." method="_on_Resume_Button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Save_Button" to="." method="_on_Save_Button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Settings_Button" to="." method="_on_Settings_Button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Main_Menu_Button" to="." method="_on_Main_Menu_Button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonContainer/Resume_Button" to="." method="_on_Resume_Button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonContainer/Save_Button" to="." method="_on_Save_Button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonContainer/Settings_Button" to="." method="_on_Settings_Button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonContainer/Main_Menu_Button" to="." method="_on_Main_Menu_Button_pressed"]

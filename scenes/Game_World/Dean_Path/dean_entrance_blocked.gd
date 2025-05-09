@@ -23,11 +23,12 @@ func _ready() -> void:
 # Function to show dialogue about blocked entrance
 func show_entrance_blocked_dialogue():
 	# Wait a second before showing dialogue
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	if not DialogueManager.is_dialogue_active():
 		DialogueManager.start_dialogue([
-			{"text": "Bars block the doorway as I pass through, no turning back now."}
+			{"speaker": GlobalData.get_player_name(), "text": "The door is blocked!"},
+			{"speaker": GlobalData.get_player_name(), "text": "No turning back now."}
 		])
 		
 		# Mark dialogue as shown in room state

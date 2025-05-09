@@ -67,6 +67,7 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_ipyv4")
 }
+speed_scale = 0.5
 
 [node name="InputBlocker" type="ColorRect" parent="."]
 anchors_preset = 15

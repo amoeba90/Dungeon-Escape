@@ -40,8 +40,15 @@ func remove_item(item_id_contains: String) -> bool:
 		# Find the item's index
 		for i in range(inventory.size()):
 			var item = inventory[i]
+			# Handle dictionary items
 			if typeof(item) == TYPE_DICTIONARY and "id" in item and item_id_contains in item["id"]:
 				item_index = i
+				print("Found dictionary item at index: ", i, " - ", item)
+				break
+			# Handle string items 
+			elif typeof(item) == TYPE_STRING and item_id_contains in item:
+				item_index = i
+				print("Found string item at index: ", i, " - ", item)
 				break
 		
 		# Remove the item if found

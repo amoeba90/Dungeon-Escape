@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://ihy64fhcs8i"]
+[gd_scene load_steps=8 format=3 uid="uid://ihy64fhcs8i"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu/Main_Menu/main_menu.gd" id="1_0gwob"]
+[ext_resource type="Texture2D" uid="uid://cdbsufqqci2e2" path="res://assets/Sprites/Inventory/cave_template (1).png" id="2_he5u6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pknuo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuara"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.517647)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4e5vm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnhq8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccx73"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,6 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_he5u6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -38,12 +91,16 @@ alignment = 1
 [node name="Game_Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 72
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.821789, 0.821789, 0.821789, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 100
 text = "Dungeon Escape"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pknuo")
 
 [node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
@@ -54,26 +111,34 @@ alignment = 1
 [node name="New_Game_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_uuara")
 text = "New Game"
 
 [node name="Continue_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
 visible = false
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_4e5vm")
 text = "Continue"
 
 [node name="Settings_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_bnhq8")
 text = "Settings"
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccx73")
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/New_Game_Button" to="." method="_on_new_game_button_pressed"]

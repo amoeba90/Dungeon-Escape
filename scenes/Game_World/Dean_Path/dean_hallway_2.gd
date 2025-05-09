@@ -1,12 +1,13 @@
 # dean_hallway_2.gd
 extends Node2D
 
+var door_unlocked = false
+
 # Path to the room the double door leads to
 const LOCKED_ROOM_PATH = "res://scenes/Game_World/Dean_Path/dean_hallway_3.tscn"
 # Function to set up door logic
 func _ready() -> void:
 	# Load saved state first
-	var door_unlocked = false
 	if "room_states" in SaveSystem.save_data and "dean_hallway_2" in SaveSystem.save_data["room_states"]:
 		var room_state = SaveSystem.save_data["room_states"]["dean_hallway_2"]
 		
@@ -51,7 +52,7 @@ func handle_transition(type: String) -> void:
 					InventoryUtils.remove_item("key")
 					
 					# Show dialogue
-					DialogueManager.start_dialogue([{"text": "The key fits perfectly. The door is now unlocked."}])
+					DialogueManager.start_dialogue([{"speaker": GlobalData.get_player_name(),"text": "The key fits perfectly. The door is now unlocked."}])
 					
 					# Mark door as unlocked in saved state
 					save_door_state(true)
@@ -65,7 +66,7 @@ func handle_transition(type: String) -> void:
 					print("Door unlocked, path set to: " + LOCKED_ROOM_PATH)
 				else:
 					# No key, just show dialogue without changing background
-					DialogueManager.start_dialogue([{"text": "The door is locked. I need a key to open it."}])
+					DialogueManager.start_dialogue([{"speaker": GlobalData.get_player_name(),"text": "The door is locked. I need a key to open it."}])
 					
 					# Cancel this interaction
 					await get_tree().create_timer(0.1).timeout
@@ -75,7 +76,7 @@ func handle_transition(type: String) -> void:
 				$Background/Background_Original.visible = false
 				$Background/Background_DoubleDoorOpen.visible = true
 				
-				# Scene change will happen automatically through your door system
+				# Scene change will happen automatically door system
 
 # Save door state
 func save_door_state(unlocked: bool):

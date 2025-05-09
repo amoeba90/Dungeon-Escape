@@ -46,7 +46,7 @@ func handle_transition(type: String) -> void:
 			$Background/Background_CabinetEmpty.visible = true
 			# play dialogue
 			DialogueManager.start_dialogue([
-				{"text": "Nothing is in here."}
+				{"speaker": GlobalData.get_player_name(), "text": "Nothing is in here."}
 			])
 			pending_action = "cabinet_done"
 		"drawer":
@@ -62,7 +62,7 @@ func handle_transition(type: String) -> void:
 					"id": "key",
 					"name": "Key",
 					"description": "A key that might open a door somewhere.",
-					"icon_path": "res://assets/Sprites/Inventory/key.PNG"  # Update this path
+					"icon_path": "res://assets/Sprites/Inventory/key.PNG"
 				}
 				
 				# Replace any existing key string with the new key object
@@ -93,7 +93,7 @@ func handle_transition(type: String) -> void:
 				
 				# dialogue
 				DialogueManager.start_dialogue([
-					{"text": "A key! I wonder what this opens?"}
+					{"Speaker": GlobalData.get_player_name(), "text": "A key! I wonder what this opens?"}
 				])
 				pending_action = "close_drawer"
 				

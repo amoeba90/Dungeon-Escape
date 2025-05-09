@@ -1,6 +1,71 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbml5u7dsoh2i"]
+[gd_scene load_steps=10 format=3 uid="uid://cbml5u7dsoh2i"]
 
 [ext_resource type="Script" path="res://scenes/Systems/settings_ui.gd" id="1_pbq36"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfjw7"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgo3t"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1ujf8"]
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_hax2j"]
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arxk8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cxchg"]
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_387cg"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1o8l"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Settings" type="Control"]
 process_mode = 3
@@ -13,7 +78,7 @@ grow_vertical = 2
 script = ExtResource("1_pbq36")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(800, 450)
+custom_minimum_size = Vector2(800, 550)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,6 +91,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bfjw7")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -34,101 +100,129 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
 [node name="Settings_Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_lgo3t")
 text = "Settings"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_1ujf8")
 
 [node name="SettingsContainner" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Volume_Section" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Volume
 "
 
 [node name="MasterVolumeContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Master Volume"
 
 [node name="MasterVolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
 
 [node name="MusicVolumeContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Music Volume"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
 
 [node name="SFXVolumeContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
 
 [node name="SFXVolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
 
 [node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_hax2j")
 
 [node name="Display_Section" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Display"
 
 [node name="ResolutionContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Resolution"
 
 [node name="ResolutionOption" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_arxk8")
 
 [node name="FullScreenContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/FullScreenContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Fullscreen"
 
 [node name="FullscreenCheck" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/SettingsContainner/FullScreenContainer"]
@@ -137,6 +231,7 @@ layout_mode = 2
 [node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_cxchg")
 
 [node name="ButtonContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -146,15 +241,21 @@ alignment = 1
 [node name="Apply_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_387cg")
 text = "Apply"
 
 [node name="Back_Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_o1o8l")
 text = "Back"
 
-[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_music_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_changed"]
 [connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer/ResolutionOption" to="." method="_on_resolution_selected"]

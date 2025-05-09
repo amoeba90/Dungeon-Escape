@@ -72,7 +72,8 @@ func handle_transition(type: String) -> void:
 func show_blocked_path_dialogue():
 	if not DialogueManager.is_dialogue_active():
 		DialogueManager.start_dialogue([
-			{"text": "The path is blocked. Looks like I'm going to have to turn around."}
+			{"speaker": GlobalData.get_player_name(),"text": "The path is blocked by rocks."},
+			{"speaker": GlobalData.get_player_name(),"text": "Looks like I'm going to have to turn around."}
 		])
 		
 		# Mark dialogue as shown in room state

@@ -34,6 +34,7 @@ func _ready():
 func load_inventory():
 	# Get inventory from SaveSystem
 	var items = SaveSystem.save_data.get("inventory", [])
+	print("Loading inventory with items: ", items)
 	
 	# Get the slots container
 	var slots_container = get_node_or_null("Background/Panel/MarginContainer/SlotsContainer")
@@ -41,13 +42,15 @@ func load_inventory():
 		print("Warning: SlotsContainer not found")
 		return
 	
-	# Clear all slots first
+	# Clear ALL slots first
+	print("Clearing all slots")
 	for i in range(slots_container.get_child_count()):
 		clear_slot(i)
 	
 	# Display items in slots
 	for i in range(min(items.size(), slots_container.get_child_count())):
 		display_item(i, items[i])
+
 
 func display_item(slot_index, item_data):
 	# Get the slots container
@@ -72,7 +75,15 @@ func display_item(slot_index, item_data):
 			"icon_path": "res://assets/Sprites/Inventory/" + item_data + ".png"
 		}
 	
-	# Create texture rect with larger size
+	# Create center container to properly center the icon
+	var center_container = CenterContainer.new()
+	center_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	center_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
+	# Make center container take up the full slot
+	center_container.custom_minimum_size = Vector2(150, 150)
+	
+	# Create texture rect with proper sizing
 	var texture_rect = TextureRect.new()
 	
 	# Try to load the icon
@@ -82,23 +93,21 @@ func display_item(slot_index, item_data):
 		print("Warning: Icon not found at: " + item_data.get("icon_path", "unknown path"))
 		# Create a placeholder if needed
 	
-	# Make the texture rect much larger to fill the entire slot
-	texture_rect.custom_minimum_size = Vector2(200, 200)  # Nearly fill the slot
+	# Set up TextureRect to fit within the slot properly
 	texture_rect.expand = true
 	texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	texture_rect.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	texture_rect.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	
-	# Center the texture rect in the slot
-	texture_rect.anchor_left = 0.5
-	texture_rect.anchor_top = 0.5
-	texture_rect.anchor_right = 0.5
-	texture_rect.anchor_bottom = 0.5
-	texture_rect.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	texture_rect.grow_vertical = Control.GROW_DIRECTION_BOTH
+	# Make the texture rect slightly smaller than the slot for padding
+	texture_rect.custom_minimum_size = Vector2(130, 130)
 	
-	# Add the texture rect directly to the slot (no container or label)
-	slot.add_child(texture_rect)
+	# Add texture_rect to the center container
+	center_container.add_child(texture_rect)
+	
+	# Add the center container to the slot
+	slot.add_child(center_container)
+	
+	# Play item appear sound
+	AudioManager.play_sfx("res://assets/Audio/SFX/item-pickup.mp3")
 
 func clear_slot(slot_index):
 	var slots_container = get_node_or_null("Background/Panel/MarginContainer/SlotsContainer")
@@ -107,9 +116,15 @@ func clear_slot(slot_index):
 		return
 	
 	var slot = slots_container.get_child(slot_index)
+	
+	# Remove ALL children from the slot, not just TextureRects
 	for child in slot.get_children():
-		if child is TextureRect:
-			child.queue_free()
+		child.queue_free()
+	
+	# Force slot update
+	slot.queue_redraw()
+	
+	print("Slot " + str(slot_index) + " cleared")
 
 func toggle_visibility():
 	is_visible = !is_visible

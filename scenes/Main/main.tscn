@@ -66,6 +66,7 @@ theme_override_constants/separation = 0
 [node name="Pause_Button" type="Button" parent="UI/Top_Bar"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_5fq55")
@@ -79,9 +80,11 @@ size_flags_horizontal = 3
 [node name="Inventory_Button" type="Button" parent="UI/Top_Bar"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_5fq55")
+action_mode = 0
 text = "Inventory"
 
 [node name="DialogueUi" parent="UI" instance=ExtResource("3_n54c3")]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://mbe3r5tna04k"]
+[gd_scene load_steps=10 format=3 uid="uid://mbe3r5tna04k"]
 
 [ext_resource type="Texture2D" uid="uid://cv83knwlwqxk8" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Zombie_sees_you.png" id="1_ey35v"]
+[ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_cave_start.gd" id="1_f0bmn"]
 [ext_resource type="Texture2D" uid="uid://cp2lqp653y6x1" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Zombie approaches.png" id="2_irclt"]
 [ext_resource type="Texture2D" uid="uid://dj3cvvkiye7lk" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/You slash zombie with sword.png" id="3_i786m"]
 [ext_resource type="Texture2D" uid="uid://ig2c84csn8yv" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Sword hitting zombie.png" id="4_jarcj"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="8_t2ocg"]
 
 [node name="DeanCaveStart" type="Node2D"]
+script = ExtResource("1_f0bmn")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -44,30 +46,19 @@ texture = ExtResource("6_m4tru")
 
 [node name="InteractiveAreas" type="Node2D" parent="."]
 
-[node name="ZombieAlive_Area" type="Area2D" parent="InteractiveAreas"]
+[node name="Crystal_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("7_hh02r")
-transition_type = "zombie_alive"
+transition_type = "crystal"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/ZombieAlive_Area"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Crystal_Area"]
 position = Vector2(1166, 256)
 scale = Vector2(50, 44.25)
-polygon = PackedVector2Array(-5.7, 9.49152, -5.7, 8.79096, -5, 6.1017, -4.4, 4.38418, -4.14, 1.64972, -4.16, -1.12994, -4.06, -1.58192, -4.46, -2.1017, -4.8, -3.54802, -4.58, -4.51977, -4.3, -5.19774, -4.92, -6.77966, -4.5, -7.52542, -4.04, -7.54802, -3.56, -7.27684, -3.22, -6.57627, -3.26, -5.51412, -3.32, -5.12994, -2.5, -4.0226, -2.26, -2.75706, -2, -0.723164, -1.5, 1.17514, -0.92, 1.17514, -1.02, 1.74011, -0.780001, 2.28249, -1.02, 2.73446, -1.2, 3.18644, -0.980001, 4.58757, -1.1, 6.59887, -1.12, 7.9774, -0.880001, 8.65537, -0.440001, 9.42373, -0.32, 9.85311, -0.800001, 9.9661, -1.66, 9.58192, -1.9, 7.72881, -1.84, 4.11299, -2.22, 2.93785, -2.9, 1.69491, -3.3, 3.9774, -3.88, 5.49153, -4.56, 7.34463, -4.86, 8.13559, -4.82, 8.76836, -4.36, 9.17514, -3.96, 9.44633, -4.52, 9.60452)
-
-[node name="ZombieDead_Area" type="Area2D" parent="InteractiveAreas"]
-position = Vector2(-149, 169)
-script = ExtResource("7_hh02r")
-transition_type = "zombie_dead"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/ZombieDead_Area"]
-position = Vector2(1166, 256)
-scale = Vector2(50, 44.25)
-polygon = PackedVector2Array(-14.18, 6.53107, -14, 5.46893, -13.02, 4.97175, -11.86, 5.31073, -11.56, 5.08475, -11.66, 1.85311, -12.3, 1.03955, -12.12, 0.316384, -11.1, 0.248588, -10.94, 1.53672, -10.82, 4.33898, -8.88, 4.0452, -6.08, 3.54802, -6.32, 2.80226, -5, 2.91525, -4.7, 3.29943, -2.68, 3.11864, -0.24, 3.41243, 1.24, 2.71186, 1.6, 2.91525, 1.18, 4.13559, -0.24, 4.31638, -3.7, 4.11299, -5.84, 5.15254, -3.14, 6.0339, -0.68, 7.34463, 0.18, 7.72881, 0.92, 6.73446, 0.959999, 8.70056, -0.300001, 8.49717, -3.7, 7.05085, -5.58, 6.59887, -8.74, 6.28249, -9.4, 6.73446, -10.66, 7.20904, -12.1, 6.50848, -13.54, 7.23164)
+polygon = PackedVector2Array(-12.42, 0.903955, -11.64, 0.406779, -11.02, 0.81356, -10.7, 1.51412, -11.56, 1.87571, -12.22, 1.51412)
 
 [node name="CaveDoor_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("7_hh02r")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"
 transition_type = "cave_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]

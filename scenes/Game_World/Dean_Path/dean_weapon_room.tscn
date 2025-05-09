@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://tiifaltjq6w6"]
+[gd_scene load_steps=6 format=3 uid="uid://tiifaltjq6w6"]
 
+[ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_weapon_room.gd" id="1_1dkc1"]
 [ext_resource type="Texture2D" uid="uid://b1jmobhnelh65" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Right_Door/Weapon_Room before talking to npc.png" id="1_pup4g"]
 [ext_resource type="Texture2D" uid="uid://bnxgq6brp0wnj" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Right_Door/Weapon_Room after talking - npc gives sword.png" id="2_qdgon"]
 [ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="5_pqv5p"]
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_hke1n"]
 
 [node name="DeanWeaponRoom" type="Node2D"]
+script = ExtResource("1_1dkc1")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -43,3 +45,4 @@ polygon = PackedVector2Array(-1.24, -9.49153, -2.72, -9.49153, -2.36, -7.38983, 
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_hke1n")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_2.tscn"
+sound_path = "res://assets/Sounds/door.wav"
