@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg0jj0h3n88xv"]
+
+[ext_resource type="Texture2D" uid="uid://drw7fjf6wlkkq" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Prison_Room/Prison room entered(before wall broken).PNG" id="1_ap3qf"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="2_0tyw5"]
+[ext_resource type="Texture2D" uid="uid://5vh4rjqxhndy" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Prison_Room/Room entered after wall broken.PNG" id="2_8a0a1"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="3_1raki"]
+[ext_resource type="Texture2D" uid="uid://bqepxv4ji4sy8" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Prison_Room/If guard is happy before opening storage.PNG" id="3_6cwko"]
+[ext_resource type="Texture2D" uid="uid://8ffh875stysr" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Prison_Room/Storage open if guard still mad.PNG" id="4_nmfx6"]
+[ext_resource type="Texture2D" uid="uid://dsiuxcw7aruv1" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Prison_Room/Storage open if guard happy.PNG" id="5_urbeq"]
+
+[node name="EmmaPrisonRoom" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_ap3qf")
+
+[node name="Background_Wall_Broken" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_8a0a1")
+
+[node name="Background_Happy_Guard" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_6cwko")
+
+[node name="Background_Door_Open_Mad" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_nmfx6")
+
+[node name="Background_Door_Open_Happy" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_urbeq")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="StorageDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_0tyw5")
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_storage_room.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+transition_type = "storage_door"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/StorageDoor_Area"]
+position = Vector2(462, 384)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.3, -0.564972, -5.24, -3.57062, -4.84, -6.66667, -4.04, -9.15254, -3.3, -10.3955, -2.24, -10.9605, -1.52, -10.8927, -0.8, -10.1243, -0.04, -8.65537, 0.54, -6.80226, 0.98, -3.9548, 1.06, -0.519774)
+
+[node name="Guard_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_0tyw5")
+transition_type = "guard"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Guard_Area"]
+position = Vector2(463, 384)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(10.8, 3.32203, 9.74, 2.89266, 9.36, 0.180791, 7.82, -0.474576, 8.1, -4.72316, 8.98, -5.26554, 9.18, -6.44068, 10, -6.71186, 10.68, -6.23729, 10.5, -4.47458, 11.18, -3.18644, 12.42, -1.80791, 11.98, -0.926554, 12.1, 1.35593, 12.7, 1.9887, 12.56, 2.89266, 11.4, 2.50847, 11.16, 0.20339, 10.5, -0.20339, 10.6, 2.0113, 11.18, 2.64407)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("3_1raki")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_3.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+play_sound = true

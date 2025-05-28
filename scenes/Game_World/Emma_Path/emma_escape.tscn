@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca4hy31kgtgfa"]
+
+[ext_resource type="Texture2D" uid="uid://celomrfew54jt" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Hallway 1(left opening goes to hall 2).png" id="1_uumyy"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="2_pvyhp"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="3_x00y2"]
+[ext_resource type="PackedScene" uid="uid://dpmfe5bhuj4wi" path="res://scenes/UI/left_arrow.tscn" id="4_y3x2o"]
+
+[node name="EmmaHallway1" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_uumyy")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="CaveDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_pvyhp")
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_escape.tscn"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.24, -0.610169, -5.16, -2.46328, -4.76, -4.70056, -3.94, -6.64407, -2.76, -8.0226, -1.58, -8.72316, -0.6, -8.74576, 0.66, -8.15819, 1.8, -6.71186, 2.64, -4.76836, 3.02, -2.80226, 3.04, -0.700565, 2.72, -0.632769)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("3_x00y2")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"
+
+[node name="LeftArrow" parent="InteractiveAreas" instance=ExtResource("4_y3x2o")]
+position = Vector2(556, 487)

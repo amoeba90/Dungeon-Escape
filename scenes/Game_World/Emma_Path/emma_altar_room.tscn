@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg14kdluik8tt"]
+
+[ext_resource type="Texture2D" uid="uid://uwiipigospii" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Altar_Room/Altar room(before placing book).PNG" id="1_g7fhq"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="2_o6p6m"]
+[ext_resource type="Texture2D" uid="uid://cfooe7ojr1o35" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Altar_Room/Book placed.PNG" id="2_vnb0j"]
+[ext_resource type="Texture2D" uid="uid://bok7vh7dfwe1w" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Altar_Room/Key appears.PNG" id="3_t5ybk"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="3_w1503"]
+
+[node name="EmmaAltarRoom" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_g7fhq")
+
+[node name="Background_Book_Placed" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_vnb0j")
+
+[node name="Background_Key_Appeared" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_t5ybk")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Altar_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_o6p6m")
+transition_type = "altar"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Altar_Area"]
+position = Vector2(1111, 609)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-3.44, 1.85311, -5.7, -3.61582, -5.3, -6.12429, -0.84, -7.34463, 3.78, -6.0113, 4.32, -3.61582, 1.86, 1.9435, -0.639999, 0.79096)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("3_w1503")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_1.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+play_sound = true

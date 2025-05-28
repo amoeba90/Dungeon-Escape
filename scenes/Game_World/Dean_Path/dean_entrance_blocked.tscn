@@ -18,3 +18,5 @@ texture = ExtResource("1_30bm1")
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("2_hxit7")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_1.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

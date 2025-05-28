@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://i6m4ffi2j0uv"]
+
+[ext_resource type="Texture2D" uid="uid://81wrquq7kaah" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Sewers/Emma_Death/Jump into water(drown).PNG" id="1_hijwv"]
+
+[node name="EmmaDeath" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_hijwv")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]

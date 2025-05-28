@@ -6,6 +6,9 @@ var previous_scene = "" # To track which scene to return to
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
+	# Let AudioManager know we're in a UI overlay that should preserve music
+	AudioManager.was_in_overlay = true
+
 	# Set focus to the input field
 	$Panel/MarginContainer/VBoxContainer/NameContainer/NameInput.grab_focus()
 	
@@ -49,8 +52,17 @@ func _on_confirm_button_pressed():
 	if player_name.is_empty():
 		player_name = "Adventurer"
 	
-	# Set the player name immediately
-	GlobalData.set_player_name(player_name)
+	# Show confirmation message
+	var confirm = Label.new()
+	confirm.text = "Name set to: " + player_name
+	confirm.add_theme_color_override("font_color", Color(0, 1, 0))
+	$Panel/MarginContainer/VBoxContainer.add_child(confirm)
+	
+	# Now fade out the music as we're about to start the game
+	AudioManager.stop_music(1.5)
+	
+	# Brief delay to show confirmation
+	await get_tree().create_timer(0.5).timeout
 	
 	# Emit signal with the name
 	emit_signal("name_confirmed", player_name)
@@ -59,10 +71,13 @@ func _on_confirm_button_pressed():
 	queue_free()
 
 func _on_back_button_pressed():
-	# Make sure the main menu is visible again
+	# Let AudioManager know we're returning to the main menu
+	AudioManager.was_in_overlay = false
+	
+	# Just go back to previous scene without affecting music
 	var main_menu = get_tree().root.get_node_or_null("MainMenu")
 	if main_menu:
 		main_menu.visible = true
 	
-	# Remove the popup
+	# Remove self
 	queue_free()

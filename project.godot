@@ -50,3 +50,7 @@ click={
 
 2d_physics/layer_1="UI"
 2d_physics/layer_2="Interactive"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

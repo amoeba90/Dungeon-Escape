@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/werewolf.mp3-e7f0f28175de13ff2cfe257c5ba7803d
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

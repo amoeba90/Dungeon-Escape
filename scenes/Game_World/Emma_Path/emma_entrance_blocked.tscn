@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh7rqwtwk7jbo"]
+
+[ext_resource type="Texture2D" uid="uid://ctjf0gk7qm7v4" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Entrance_Blocked/path_sealed(cannot return to opening scene).png" id="1_0sndk"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="3_1raki"]
+
+[node name="EmmaEntranceBlocked" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_0sndk")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("3_1raki")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_1.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

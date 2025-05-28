@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://wnmcdavg5tvd"]
+
+[ext_resource type="Texture2D" uid="uid://dddwpdbb7w155" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Hall_3.png" id="1_ewux7"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="2_d6jha"]
+[ext_resource type="Texture2D" uid="uid://dboqg4hjru0e4" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Sewer grate pulled off.png" id="2_wueaa"]
+[ext_resource type="Texture2D" uid="uid://oj1v7awq1cxh" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Prison room chosen.png" id="3_3la2p"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="3_yvo7q"]
+[ext_resource type="Texture2D" uid="uid://tmv8xtxe3lpo" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Prison room chosen if grate is open.png" id="4_s2wap"]
+[ext_resource type="Texture2D" uid="uid://b3tje84da5vu8" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Torture chamber chosen.png" id="5_arj0u"]
+[ext_resource type="Texture2D" uid="uid://evciqgcd4jyv" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Torture chamber chosen if grate open.png" id="6_ghu4q"]
+
+[node name="EmmaHallway3" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_ewux7")
+
+[node name="Background_Original_GrateOpen" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_wueaa")
+
+[node name="Background_PrisonDoorOpen" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_3la2p")
+
+[node name="Background_PrisonDoorOpen_GrateOpen" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_s2wap")
+
+[node name="Background_TortureDoorOpen" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_arj0u")
+
+[node name="Background_TortureDoorOpen_GrateOpen" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("6_ghu4q")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="TortureRoomDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_d6jha")
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_torture_room.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+transition_type = "torture_room_door"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/TortureRoomDoor_Area"]
+position = Vector2(1868, 538)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.02, -13.8079, 0.239998, -11.2542, -1.16, 2.73446, -5.46, -2.77966)
+
+[node name="PrisonRoomDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_d6jha")
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_prison_room.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+transition_type = "prison_room_door"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/PrisonRoomDoor_Area"]
+position = Vector2(590, 403)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.02, -8.20339, 0.24, -10.8927, 0.7, 0.0225992, -3.66, 5.62712)
+
+[node name="SewersDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_d6jha")
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_sewers.tscn"
+sound_path = "res://assets/Audio/SFX/metal-clang.mp3"
+transition_type = "sewers_door"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/SewersDoor_Area"]
+position = Vector2(1116, 636)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-2.82, -10.3277, -2.48, -11.2542, -1.88, -11.774, -1.14, -12.1356, -0.379997, -12.2712, 0.400003, -12.2712, 1.14, -12.0226, 1.86, -11.6384, 2.22, -10.9379, 2.28, -10.3277)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("3_yvo7q")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_2.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

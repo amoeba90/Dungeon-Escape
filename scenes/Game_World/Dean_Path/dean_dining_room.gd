@@ -37,6 +37,7 @@ func update_visuals():
 
 # toggle background visibiility based on the door clicked
 func handle_transition(type: String) -> void:
+	var drawer = $InteractiveAreas/Drawer_Area
 	if DialogueManager.is_dialogue_active():
 		return
 	
@@ -52,17 +53,20 @@ func handle_transition(type: String) -> void:
 		"drawer":
 			if not drawer_open:
 				drawer_open = true
+				drawer.play_sound = true
 				update_visuals()
 				
 			elif drawer_open and not key_taken:
 				key_taken = true
+				drawer.play_sound = false
 				
 				# Create a proper item object
 				var key_item = {
 					"id": "key",
 					"name": "Key",
 					"description": "A key that might open a door somewhere.",
-					"icon_path": "res://assets/Sprites/Inventory/key.PNG"
+					"icon_path": "res://assets/Sprites/Inventory/key.PNG",
+					"use_sound_path": "res://assets/Audio/SFX/key.mp3"
 				}
 				
 				# Replace any existing key string with the new key object
@@ -100,6 +104,7 @@ func handle_transition(type: String) -> void:
 			elif drawer_open and key_taken:
 				drawer_open = false
 				update_visuals()
+				drawer.play_sound = true
 
 func _on_dialogue_ended():
 	match pending_action:

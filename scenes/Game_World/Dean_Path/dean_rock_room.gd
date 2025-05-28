@@ -33,6 +33,7 @@ func _ready() -> void:
 
 # toggle background visibiility based on the door clicked
 func handle_transition(type: String) -> void:
+	var lever = $InteractiveAreas/Lever_Area
 	match type:
 		"pull_lever":
 			if not lever_pulled:
@@ -43,6 +44,7 @@ func handle_transition(type: String) -> void:
 				# wait half a second
 				await get_tree().create_timer(1.0).timeout
 				rocks_falling = true
+				AudioManager.play_sfx("res://assets/Audio/SFX/rock-fall.mp3", 4)
 				
 				$Background/Background_LeverPull.visible = false
 				$Background/Background_RockFallStart.visible = true
@@ -67,6 +69,10 @@ func handle_transition(type: String) -> void:
 				
 				# Show dialogue about blocked path
 				show_blocked_path_dialogue()
+				
+				lever.play_sound = false
+			else:
+				lever.play_sound = false
 
 # Function to show dialogue about blocked path
 func show_blocked_path_dialogue():

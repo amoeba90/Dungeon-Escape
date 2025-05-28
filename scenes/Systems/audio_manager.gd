@@ -14,6 +14,7 @@ var current_music_volume: float = 0.0
 
 # For tracking settings menu state
 var was_in_settings: bool = false
+var was_in_overlay: bool = false
 var previous_scene_path: String = ""
 
 # Initialize audio system
@@ -98,7 +99,7 @@ func prepare_for_scene_change():
 # Resume music after scene change if appropriate
 func handle_scene_loaded(scene_path: String):
 	# Don't restart music when going between main menu and settings
-	if scene_path == "res://scenes/Systems/settings.tscn":
+	if scene_path == "res://scenes/Systems/settings.tscn" || scene_path == "res://scenes/Systems/player_name_customization.tscn":
 		was_in_settings = true
 		return
 		

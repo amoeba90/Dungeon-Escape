@@ -27,12 +27,9 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
 		if transition_type != "" and parent_scene.has_method("handle_transition"):
 			parent_scene.handle_transition(transition_type)
 		
-		# Play door/arrow sound
-		if sound_path.strip_edges() != "":
-			AudioManager.play_sfx(sound_path)
-		else:
-			# Default door sound if none specified
-			AudioManager.play_sfx("res://assets/Audio/SFX/door.wav")
+		# Only play sound if explicitly enabled AND a sound path is provided
+		if play_sound and sound_path.strip_edges() != "":
+			play_custom_sound()
 		
 		if next_scene_path.strip_edges():
 			SceneChanger.change_scene(next_scene_path)
@@ -50,7 +47,7 @@ func play_custom_sound():
 		audio_player.stream = load(sound_path) # load the specified sound
 		add_child(audio_player) # add the audio player to this node
 		audio_player.play() #play the sound
-		audio_player.connect("finished", Callable(self, "_on_audio_finished"))
+		audio_player.connect("finished", Callable(self, "_on_audio_finished").bind(audio_player))
 	else:
 		print("Error: No sound file specified for this door")
 

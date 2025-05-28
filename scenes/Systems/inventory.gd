@@ -227,15 +227,35 @@ func deselect_item():
 
 func use_selected_item():
 	if selected_item_index >= 0:
-		# Remove item from inventory
+		# Get the item data
 		var items = SaveSystem.save_data.get("inventory", [])
 		if selected_item_index < items.size():
+			var item_data = items[selected_item_index]
+			
+			# Play different sound based on item type
+			var sound_path = "res://assets/Audio/SFX/item-pickup.mp3"  # Default sound
+			
+			# Check if item has a custom use sound
+			if typeof(item_data) == TYPE_DICTIONARY and item_data.has("use_sound_path"):
+				sound_path = item_data.use_sound_path
+			
+			# Play the appropriate sound
+			var audio_player = AudioStreamPlayer.new()
+			if ResourceLoader.exists(sound_path):
+				audio_player.stream = load(sound_path)
+				add_child(audio_player)
+				audio_player.play()
+				audio_player.connect("finished", Callable(audio_player, "queue_free"))
+			else:
+				print("Warning: Sound file not found: " + sound_path)
+			
+			# Remove item from inventory (rest of your existing code)
 			items.remove_at(selected_item_index)
 			SaveSystem.save_data["inventory"] = items
 			SaveSystem.save_game()
-		
-		# Reset selection
-		deselect_item()
-		
-		# Reload inventory
-		load_inventory()
+			
+			# Reset selection
+			deselect_item()
+			
+			# Reload inventory
+			load_inventory()

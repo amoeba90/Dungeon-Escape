@@ -36,7 +36,9 @@ polygon = PackedVector2Array(-7.26, -7.77401, -7.72, -7.29944, -7.72, -6.39548, 
 position = Vector2(-149, 169)
 script = ExtResource("3_jwijq")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_start.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
 transition_type = "cave_door"
+play_sound = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
 position = Vector2(1166, 256)
@@ -47,7 +49,9 @@ polygon = PackedVector2Array(-15.1, -7.00565, -16.56, -5.8983, -17.5, -3.16384, 
 position = Vector2(-149, 169)
 script = ExtResource("3_jwijq")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_battle_arena_entrance.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
 transition_type = "double_door"
+play_sound = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/DoubleDoor_Area"]
 position = Vector2(1166, 256)
@@ -57,3 +61,5 @@ polygon = PackedVector2Array(-5.36, -8.22599, 2.76, -8.29379, 2.74, -0.610169, -
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("4_shuiw")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_2.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+play_sound = true

@@ -64,6 +64,9 @@ func handle_transition(type: String) -> void:
 					# Set the path for next click
 					double_door.next_scene_path = LOCKED_ROOM_PATH
 					print("Door unlocked, path set to: " + LOCKED_ROOM_PATH)
+					
+					#turn on the door sound
+					double_door.play_sound = true
 				else:
 					# No key, just show dialogue without changing background
 					DialogueManager.start_dialogue([{"speaker": GlobalData.get_player_name(),"text": "The door is locked. I need a key to open it."}])
@@ -75,7 +78,6 @@ func handle_transition(type: String) -> void:
 				# Door is already unlocked, show open animation normally
 				$Background/Background_Original.visible = false
 				$Background/Background_DoubleDoorOpen.visible = true
-				
 				# Scene change will happen automatically door system
 
 # Save door state

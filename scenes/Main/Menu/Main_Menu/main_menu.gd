@@ -1,11 +1,14 @@
 # main_menu.gd
 extends Control
 
-var debug_mode = true #change to false before release
+var debug_mode = false #change to false before release
 var name_popup_scene = preload("res://scenes/Systems/player_name_customization.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Play main menu music if not already playing
+	if AudioManager.current_music_path != "res://assets/Audio/Music/title.mp3":
+		AudioManager.play_music("res://assets/Audio/Music/title.mp3")
 	# only delete saves in debug mode
 	if debug_mode:
 		delete_save_file()
@@ -14,7 +17,6 @@ func _ready() -> void:
 		$MarginContainer/VBoxContainer/ButtonContainer/Continue_Button.visible = true # Show the Load Game button
 	else:
 		$MarginContainer/VBoxContainer/ButtonContainer/Continue_Button.visible = false # Hide the Load Game button
-	AudioManager.play_music("res://assets/Audio/Music/title.mp3")
 
 func delete_save_file(): # while testing, i can use this to delete my previous safe file as id like
 	if FileAccess.file_exists(SaveSystem.save_file_path):
@@ -43,6 +45,9 @@ func _on_new_game_button_pressed():
 		print("ERROR: Name popup scene not found at path: " + popup_path)
 		# Fall back to default name
 		start_new_game("Player")
+		
+		# If the name popup isn't found, fade out the music here
+		AudioManager.stop_music(1.5)
 
 func _on_name_confirmed(player_name):
 	print("Name confirmed: " + player_name)

@@ -32,7 +32,9 @@ texture = ExtResource("4_spnsl")
 position = Vector2(-149, 169)
 script = ExtResource("5_oqscg")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_2.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
 transition_type = "left_door"
+play_sound = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/LeftDoor_Area"]
 position = Vector2(555, 294)
@@ -43,7 +45,9 @@ polygon = PackedVector2Array(-4.24, -5.76271, 0.900001, -8.36158, 1.36, 2.48588,
 position = Vector2(498, -24)
 script = ExtResource("5_oqscg")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_rock_room.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
 transition_type = "right_door"
+play_sound = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/RightDoor_Area"]
 position = Vector2(1, 1)
@@ -52,3 +56,5 @@ polygon = PackedVector2Array(951, 598, 971, 118, 1232, 235, 1163, 845)
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_mhmqv")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_entrance_blocked.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

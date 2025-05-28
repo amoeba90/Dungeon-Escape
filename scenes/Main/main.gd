@@ -90,7 +90,20 @@ func change_room(new_room_scene: PackedScene):
 	if new_room_scene == null:
 		print("Error: Room Scene not provided")
 		return
-		
+	
+	# Check for music that should be played in the new room
+	var room_name = new_room_scene.resource_path.get_file().get_basename()
+	
+	# Different music for different room types
+	if "battle" in room_name.to_lower():
+		AudioManager.play_music("res://assets/Audio/Music/battle.mp3", 1.5)
+	elif "cave" in room_name.to_lower():
+		AudioManager.play_music("res://assets/Audio/Music/cave.mp3", 1.5)
+	elif "escape" in room_name.to_lower():
+		AudioManager.play_music("res://assets/Audio/Music/forest1.mp3", 1.5)
+	else:
+		AudioManager.play_music("res://assets/Audio/Music/dungeon.mp3", 1.5)
+	
 	SaveSystem.save_data["current_room"] = new_room_scene.resource_path
 	SaveSystem.save_game()
 	

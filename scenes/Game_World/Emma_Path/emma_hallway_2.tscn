@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://y2ncdig1yhbd"]
+
+[ext_resource type="Texture2D" uid="uid://disifjaturw2f" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Hallway_2_(before_taking_light).png" id="1_0j6dc"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="2_8mxim"]
+[ext_resource type="Texture2D" uid="uid://c2oaj4wu2380n" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Guard room open (if light not taken).png" id="2_0408d"]
+[ext_resource type="Texture2D" uid="uid://dk1pf14hbn4fv" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Hallway_2_(after_taking_light).png" id="3_608qe"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="3_ueb85"]
+[ext_resource type="Texture2D" uid="uid://c0xp4cun11rur" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Guard room open (if light is taken).png" id="4_7sipo"]
+[ext_resource type="PackedScene" uid="uid://b4bd8jvii6i57" path="res://scenes/UI/right_arrow.tscn" id="7_vlwo2"]
+
+[node name="EmmaHallway2" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Door_Closed" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_0j6dc")
+
+[node name="Background_Door_Open" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_0408d")
+
+[node name="Background_Door_Closed_Light_Taken" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_608qe")
+
+[node name="Background_Door_Open_Light_Taken" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_7sipo")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="BedroomDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("2_8mxim")
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_bedroom.tscn"
+sound_path = "res://assets/Audio/SFX/door.wav"
+transition_type = "bedroom_door"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/BedroomDoor_Area"]
+position = Vector2(1156, 259)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.12, -0.564972, -5.06, -2.50847, -4.76, -4.70056, -3.98, -6.64407, -2.94, -8.0678, -1.78, -8.70057, -0.6, -8.74576, 0.66, -8.15819, 1.8, -6.71186, 2.64, -4.76836, 3.02, -2.80226, 3.18, -0.610169)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("3_ueb85")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_3.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true
+
+[node name="RightArrow_Area" parent="InteractiveAreas" instance=ExtResource("7_vlwo2")]
+position = Vector2(1346, 315)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_1.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

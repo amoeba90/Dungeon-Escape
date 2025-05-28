@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=3 uid="uid://jjw3lfxkf5tr"]
+
+[ext_resource type="Texture2D" uid="uid://fary8e6wfnnr" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Emma_Hallway_2/Emma_Hallway_3/Emma_Sewers/Emma_Trapdoor/Pin pad.PNG" id="1_rkffe"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="4_u22xn"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="5_ap1ul"]
+
+[node name="EmmaTrapdoor" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_rkffe")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="Pin1_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin1"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin1_Area"]
+position = Vector2(1111, 609)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -5.02, -12.7684, -4.96, -9.06215, -13.2, -9.03955)
+
+[node name="Pin2_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin2"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin2_Area"]
+position = Vector2(1526, 606)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -2.44, -12.6102, -2.44, -9.01695, -13.2, -9.03955)
+
+[node name="Pin3_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-298, 338)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin3"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin3_Area"]
+position = Vector2(2220, 439)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -5.2, -12.678, -5.2, -9.15254, -13.2, -9.03955)
+
+[node name="Pin4_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-447, 507)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin4"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin4_Area"]
+position = Vector2(1410, 439)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -5.02, -12.7684, -4.96, -9.06215, -13.2, -9.03955)
+
+[node name="Pin5_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-596, 676)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin5"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin5_Area"]
+position = Vector2(1974, 266)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -2.46, -12.6328, -2.48, -9.08475, -13.2, -9.03955)
+
+[node name="Pin6_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-745, 845)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin6"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin6_Area"]
+position = Vector2(2668, 99)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -5.25999, -12.7458, -5.2, -9.10735, -13.2, -9.03955)
+
+[node name="Pin7_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-894, 1014)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin7"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin7_Area"]
+position = Vector2(1856, 96)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -5.02, -12.7684, -4.96, -9.06215, -13.2, -9.03955)
+
+[node name="Pin8_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-1043, 1183)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin8"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin8_Area"]
+position = Vector2(2421, -73)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -2.44, -12.7232, -2.46, -9.08475, -13.2, -9.03955)
+
+[node name="Pin9_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-1192, 1352)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin9"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin9_Area"]
+position = Vector2(2569, -74)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -2.42, -12.7006, -2.42, -9.51412, -13.2, -9.46893)
+
+[node name="Pin0_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-1192, 1352)
+script = ExtResource("4_u22xn")
+sound_path = "res://assets/Audio/SFX/lever.mp3"
+transition_type = "pin0"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Pin0_Area"]
+position = Vector2(3115, -241)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-13.2, -12.7006, -5.18, -12.7458, -5.2, -9.10735, -13.2, -9.03955)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("5_ap1ul")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_sewers.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

@@ -254,8 +254,8 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_o1o8l")
 text = "Back"
 
-[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_changed"]
+[connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_music_volume_changed"]
 [connection signal="changed" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_changed"]
 [connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/SettingsContainner/ResolutionContainer/ResolutionOption" to="." method="_on_resolution_selected"]

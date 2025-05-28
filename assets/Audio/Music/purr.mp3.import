@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/purr.mp3-fc8a5a14a7ac35ef893b76813de3d59a.mp3
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

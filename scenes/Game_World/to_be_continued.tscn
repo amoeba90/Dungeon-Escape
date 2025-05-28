@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxqj2vg1wnsrg"]
+
+[ext_resource type="Script" path="res://scenes/Game_World/to_be_continued.gd" id="1_iyujl"]
+[ext_resource type="Texture2D" uid="uid://s4ooytbmg7i7" path="res://assets/Sprites/Rooms/stone_wall (1).png" id="2_txubf"]
+
+[node name="ToBeContinued" type="Node2D"]
+script = ExtResource("1_iyujl")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("2_txubf")

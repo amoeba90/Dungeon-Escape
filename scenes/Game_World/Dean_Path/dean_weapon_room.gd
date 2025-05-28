@@ -71,7 +71,8 @@ func _on_dialogue_ended():
 				"id": "sword",
 				"name": "Sword",
 				"description": "The sword to defeat the zombie.",
-				"icon_path": "res://assets/Sprites/Inventory/sword.PNG"
+				"icon_path": "res://assets/Sprites/Inventory/sword.PNG",
+				"use_sound_path": "res://assets/Audio/SFX/sword-sound-2-36274.mp3"
 			}
 			
 			# Replace any existing sword string with the new sword object

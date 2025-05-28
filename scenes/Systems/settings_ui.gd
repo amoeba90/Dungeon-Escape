@@ -22,6 +22,9 @@ var original_resolution_index = 0
 var settings_saved = false
 
 func _ready():
+	# Let AudioManager know we're in settings
+	AudioManager.was_in_settings = true
+	
 	# Make sure settings UI processes even when game is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	

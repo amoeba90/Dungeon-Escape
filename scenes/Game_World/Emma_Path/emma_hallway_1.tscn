@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cob4hg8ryt4q"]
+
+[ext_resource type="Texture2D" uid="uid://celomrfew54jt" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Hallway 1(left opening goes to hall 2).png" id="1_winia"]
+[ext_resource type="Texture2D" uid="uid://6fpdshadw70e" path="res://assets/Sprites/Rooms/Emma/Emma_Sewers/Emma_Hallway_1/Altar_Room_open.png" id="2_84ygq"]
+[ext_resource type="PackedScene" uid="uid://dpmfe5bhuj4wi" path="res://scenes/UI/left_arrow.tscn" id="4_ihwp5"]
+[ext_resource type="Script" path="res://scenes/Systems/next_room.gd" id="6_n8q5c"]
+[ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="7_g7fy0"]
+
+[node name="EmmaHallway1" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Original" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+texture = ExtResource("1_winia")
+
+[node name="Background_AltarDoor_Open" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_84ygq")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="AltarDoor_Area" type="Area2D" parent="InteractiveAreas"]
+position = Vector2(-149, 169)
+script = ExtResource("6_n8q5c")
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_altar_room.tscn"
+sound_path = "res://assets/Audio/SFX/door.mp3"
+transition_type = "altar_door"
+play_sound = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/AltarDoor_Area"]
+position = Vector2(1166, 256)
+scale = Vector2(50, 44.25)
+polygon = PackedVector2Array(-5.24, -0.610169, -5.16, -2.46328, -4.76, -4.70056, -3.94, -6.64407, -2.76, -8.0226, -1.58, -8.72316, -0.6, -8.74576, 0.66, -8.15819, 1.8, -6.71186, 2.64, -4.76836, 3.02, -2.80226, 3.04, -0.700565, 2.72, -0.632769)
+
+[node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("7_g7fy0")]
+position = Vector2(960, 1000)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_entrance_blocked.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true
+
+[node name="LeftArrow_Area" parent="InteractiveAreas" instance=ExtResource("4_ihwp5")]
+position = Vector2(545, 323)
+next_scene_path = "res://scenes/Game_World/Emma_Path/emma_hallway_2.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

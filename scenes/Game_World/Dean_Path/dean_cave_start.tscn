@@ -59,6 +59,7 @@ polygon = PackedVector2Array(-12.42, 0.903955, -11.64, 0.406779, -11.02, 0.81356
 [node name="CaveDoor_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("7_hh02r")
+sound_path = "res://assets/Audio/SFX/walk.mp3"
 transition_type = "cave_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveDoor_Area"]
@@ -69,3 +70,5 @@ polygon = PackedVector2Array(-10.68, -2.14689, -9.3, -6.75706, -8.16, -8.0452, -
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("8_t2ocg")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_hallway_3.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true
