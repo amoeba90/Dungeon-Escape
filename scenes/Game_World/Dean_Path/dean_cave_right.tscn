@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx7comvocqnlk"]
+[gd_scene load_steps=8 format=3 uid="uid://bx7comvocqnlk"]
 
+[ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_cave_right.gd" id="1_2rwiv"]
 [ext_resource type="Texture2D" uid="uid://bxajyid117fp4" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/Right_Cave_-_Ghosts_Blocking_Torch.png" id="1_h61mp"]
 [ext_resource type="Texture2D" uid="uid://b536y5yn55uxp" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/Player shines crystal at ghosts.png" id="2_gj2dg"]
 [ext_resource type="Texture2D" uid="uid://n42wp2kifhx1" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Cave_Right/Crystal light destroys ghosts.png" id="3_ena48"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_8upsx"]
 
 [node name="DeanCaveRight" type="Node2D"]
+script = ExtResource("1_2rwiv")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -35,7 +37,6 @@ texture = ExtResource("4_i8l0a")
 [node name="Ghost_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("5_4hn56")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_left.tscn"
 transition_type = "ghost"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Ghost_Area"]
@@ -46,7 +47,6 @@ polygon = PackedVector2Array(-10.22, 5.87571, -10.72, 4.13559, -10.96, 0.677966,
 [node name="Torch_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("5_4hn56")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_boss.tscn"
 transition_type = "torch"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/Torch_Area"]
@@ -57,3 +57,5 @@ polygon = PackedVector2Array(-8.12, -2.96045, -8.9, -3.34463, -8.02, -6.1017, -8
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_8upsx")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_crossroads.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true

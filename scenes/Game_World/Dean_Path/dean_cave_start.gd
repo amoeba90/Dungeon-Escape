@@ -25,6 +25,10 @@ func _ready() -> void:
 				$Background/Background_ZombieDeadCrystal.visible = true
 			# Hide the original background
 			$Background/Background_ZombieStart.visible = false
+			
+			var cave_door = $InteractiveAreas/CaveDoor_Area
+			cave_door.next_scene_path = LOCKED_ROOM_PATH
+			print("Cave door unlocked - zombie already defeated")
 		
 		if "cave_door_unlocked" in room_state and room_state["cave_door_unlocked"]:
 			cave_door_unlocked = true
@@ -116,7 +120,7 @@ func handle_transition(type: String) -> void:
 					"id": "crystal",
 					"name": "Crystal",
 					"description": "A mysterious glowing crystal.",
-					"icon_path": "res://assets/Sprites/Inventory/crystal_shard.PNG",
+					"icon_path": "res://assets/Sprites/Inventory/crystal_shard.png",
 					"use_sound_path": "res://assets/Audio/SFX/crystal.mp3"
 				}
 				

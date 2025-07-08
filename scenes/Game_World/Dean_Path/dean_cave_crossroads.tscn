@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://vstgi7vgh040"]
+[gd_scene load_steps=8 format=3 uid="uid://vstgi7vgh040"]
 
+[ext_resource type="Script" path="res://scenes/Game_World/Dean_Path/dean_cave_crossroads.gd" id="1_egx0c"]
 [ext_resource type="Texture2D" uid="uid://dnx7sie86teae" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/cave_crossroads.png" id="1_qprxl"]
 [ext_resource type="Texture2D" uid="uid://7d655rtdo8cp" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Web starting to burn (after getting torch).png" id="2_rv6cg"]
 [ext_resource type="Texture2D" uid="uid://fv7ldbc5sq5r" path="res://assets/Sprites/Rooms/Dean/Hallway_1/Left_Door/Hallway_2/Double_Doors/Hallway_3/Cave/Cave_Continued/Web almost gone.png" id="3_m7bks"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2wokpixnlha0" path="res://scenes/UI/down_arrow.tscn" id="6_u1yav"]
 
 [node name="DeanCaveCrossroads" type="Node2D"]
+script = ExtResource("1_egx0c")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -36,6 +38,9 @@ texture = ExtResource("4_n4rkf")
 position = Vector2(-149, 169)
 script = ExtResource("5_ke1f2")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_left.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+transition_type = "cave_left"
+play_sound = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveLeft_Area"]
 position = Vector2(1166, 256)
@@ -45,8 +50,8 @@ polygon = PackedVector2Array(-18.12, 4.0452, -18.38, 2.35028, -17.12, -0.316384,
 [node name="CaveBoss_Area" type="Area2D" parent="InteractiveAreas"]
 position = Vector2(-149, 169)
 script = ExtResource("5_ke1f2")
-next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_boss.tscn"
-transition_type = "boss_web"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+transition_type = "cave_middle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveBoss_Area"]
 position = Vector2(1166, 256)
@@ -57,6 +62,9 @@ polygon = PackedVector2Array(-8.76, 4.18079, -8.34, 2.35028, -8.14, -0.99435, -6
 position = Vector2(-149, 169)
 script = ExtResource("5_ke1f2")
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_right.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+transition_type = "cave_right"
+play_sound = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractiveAreas/CaveRight_Area"]
 position = Vector2(1166, 256)
@@ -66,3 +74,5 @@ polygon = PackedVector2Array(6.94, 4.65537, 7.26, 3.07345, 7.06, 1.64972, 7.56, 
 [node name="DownArrow_Area" parent="InteractiveAreas" instance=ExtResource("6_u1yav")]
 position = Vector2(960, 1000)
 next_scene_path = "res://scenes/Game_World/Dean_Path/dean_cave_start.tscn"
+sound_path = "res://assets/Audio/SFX/walk.mp3"
+play_sound = true
